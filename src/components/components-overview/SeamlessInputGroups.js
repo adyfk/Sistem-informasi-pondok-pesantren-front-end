@@ -20,7 +20,7 @@ const SeamlessInputGroups = () => (
 
     <InputGroup seamless className="mb-3">
       <FormInput
-        type="password"
+        type="password" 
         value="mySuperSecretPassword"
         onChange={() => {}}
       />

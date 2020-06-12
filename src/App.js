@@ -6,6 +6,7 @@ import withTracker from "./withTracker";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./shards-dashboard/styles/shards-dashboards.1.1.0.min.css";
+import { checkAuth } from "./utils/auth";
 
 export default () => (
   <Router basename={process.env.REACT_APP_BASENAME || ""}>
@@ -17,6 +18,7 @@ export default () => (
             path={route.path}
             exact={route.exact}
             component={withTracker(props => {
+              checkAuth({ auth: route.auth, history: props.history });
               return (
                 <route.layout {...props} layoutProps={route.layoutProps}>
                   <route.component {...props} />

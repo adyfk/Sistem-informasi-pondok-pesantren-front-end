@@ -50,6 +50,7 @@ export default [
   },
   {
     path: "/errors",
+    auth: true,
     layout: DefaultLayout,
     component: Errors
   },
