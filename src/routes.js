@@ -9,6 +9,8 @@ import Login from "./views/Login";
 import PondokManagement from "./views/PondokManagement";
 import SantriManagement from "./views/SantriManagement";
 import Payment from "./views/Payment";
+import BedroomManagement from "./views/BedroomManagement";
+import ClassManagement from "./views/ClassManagement";
 import BlogOverview from "./views/BlogOverview";
 import UserProfileLite from "./views/UserProfileLite";
 import AddNewPost from "./views/AddNewPost";
@@ -50,6 +52,16 @@ export default [
     path: "/pondok-management",
     layout: DefaultLayout,
     component: PondokManagement
+  },
+  {
+    path: "/bedroom-management",
+    layout: DefaultLayout,
+    component: BedroomManagement
+  },
+  {
+    path: "/class-management",
+    layout: DefaultLayout,
+    component: ClassManagement
   },
   {
     path: "/blog-overview",

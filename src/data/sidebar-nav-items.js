@@ -24,12 +24,12 @@ export default function() {
     {
       title: "Bedroom Santri",
       htmlBefore: '<i class="material-icons">vertical_split</i>',
-      to: "/bedroom-santri"
+      to: "/bedroom-management"
     },
     {
       title: "Class Santri",
       htmlBefore: '<i class="material-icons">vertical_split</i>',
-      to: "/class-santri"
+      to: "/class-management"
     },
     {
       title: "Blog Posts",
