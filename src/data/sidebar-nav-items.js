@@ -14,7 +14,7 @@ export default function() {
     {
       title: "Santri Management",
       htmlBefore: '<i class="material-icons">vertical_split</i>',
-      to: "/santri"
+      to: "/santri-management"
     },
     {
       title: "Payment",

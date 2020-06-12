@@ -6,6 +6,8 @@ import { DefaultLayout } from "./layouts";
 
 // Route Views
 import Login from "./views/Login";
+import PondokManagement from "./views/PondokManagement";
+import SantriManagement from "./views/SantriManagement";
 import BlogOverview from "./views/BlogOverview";
 import UserProfileLite from "./views/UserProfileLite";
 import AddNewPost from "./views/AddNewPost";
@@ -32,6 +34,16 @@ export default [
       fullWidth: true
     },
     component: Login
+  },
+  {
+    path: "/santri-management",
+    layout: DefaultLayout,
+    component: SantriManagement
+  },
+  {
+    path: "/pondok-management",
+    layout: DefaultLayout,
+    component: PondokManagement
   },
   {
     path: "/blog-overview",
