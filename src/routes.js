@@ -8,6 +8,7 @@ import { DefaultLayout } from "./layouts";
 import Login from "./views/Login";
 import PondokManagement from "./views/PondokManagement";
 import SantriManagement from "./views/SantriManagement";
+import Payment from "./views/Payment";
 import BlogOverview from "./views/BlogOverview";
 import UserProfileLite from "./views/UserProfileLite";
 import AddNewPost from "./views/AddNewPost";
@@ -39,6 +40,11 @@ export default [
     path: "/santri-management",
     layout: DefaultLayout,
     component: SantriManagement
+  },
+  {
+    path: "/payment",
+    layout: DefaultLayout,
+    component: Payment
   },
   {
     path: "/pondok-management",
