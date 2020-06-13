@@ -6,7 +6,10 @@ import getSidebarNavItems from "../data/sidebar-nav-items";
 
 let _store = {
   menuVisible: false,
-  navItems: getSidebarNavItems()
+  navItems: getSidebarNavItems(),
+  profile: {
+    name: "Sample Nama"
+  }
 };
 
 class Store extends EventEmitter {
@@ -24,6 +27,9 @@ class Store extends EventEmitter {
       case Constants.TOGGLE_SIDEBAR:
         this.toggleSidebar();
         break;
+      case Constants.SET_PROFILE:
+        this.profileState = payload;
+        break;
       default:
     }
   }
@@ -39,6 +45,14 @@ class Store extends EventEmitter {
 
   getSidebarItems() {
     return _store.navItems;
+  }
+
+  get profileState() {
+    return _store.profile;
+  }
+
+  set profileState(profile) {
+    return (_store.profile = profile);
   }
 
   addChangeListener(callback) {

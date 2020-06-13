@@ -1,3 +1,7 @@
 .input-group-prepend-custom-bottom {
   bottom: initial !important;
 }
+.link-default {
+  color: initial;
+  text-decoration: "none";
+}

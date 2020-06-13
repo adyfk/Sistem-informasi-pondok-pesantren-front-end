@@ -7,10 +7,12 @@ import { DefaultLayout } from "./layouts";
 // Route Views
 import Login from "./views/Login";
 import PondokManagement from "./views/PondokManagement";
+import GenerationManagement from "./views/PondokManagement/GenerationManagement";
 import SantriManagement from "./views/SantriManagement";
 import Payment from "./views/Payment";
 import BedroomManagement from "./views/BedroomManagement";
 import ClassManagement from "./views/ClassManagement";
+import NotFound from "./views/NotFound";
 import BlogOverview from "./views/BlogOverview";
 import UserProfileLite from "./views/UserProfileLite";
 import AddNewPost from "./views/AddNewPost";
@@ -18,6 +20,10 @@ import Errors from "./views/Errors";
 import ComponentsOverview from "./views/ComponentsOverview";
 import Tables from "./views/Tables";
 import BlogPosts from "./views/BlogPosts";
+
+const rootUrl = {
+  pondokManagement: "/pondok-management"
+};
 
 export default [
   {
@@ -49,9 +55,16 @@ export default [
     component: Payment
   },
   {
-    path: "/pondok-management",
+    path: rootUrl.pondokManagement,
     layout: DefaultLayout,
-    component: PondokManagement
+    component: PondokManagement,
+    exact: true
+  },
+  {
+    path: rootUrl.pondokManagement + "/generation-management",
+    layout: DefaultLayout,
+    component: GenerationManagement,
+    exact: true
   },
   {
     path: "/bedroom-management",
@@ -80,7 +93,6 @@ export default [
   },
   {
     path: "/errors",
-    auth: true,
     layout: DefaultLayout,
     component: Errors
   },
@@ -98,5 +110,10 @@ export default [
     path: "/blog-posts",
     layout: DefaultLayout,
     component: BlogPosts
+  },
+  {
+    path: "/*",
+    layout: DefaultLayout,
+    component: NotFound
   }
 ];

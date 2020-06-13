@@ -15,8 +15,6 @@ import {
   FormFeedback
 } from "shards-react";
 
-import "./login-style.css";
-
 const SignInSchema = yup.object().shape({
   username: yup.string().required(),
   password: yup

@@ -4,6 +4,8 @@ import React from "react";
 import { Container, Row, Col, Card, CardBody, Badge } from "shards-react";
 
 import PageTitle from "../components/common/PageTitle";
+import { Link } from "react-router-dom";
+import { pushPath } from "../utils/url";
 
 class BlogPosts extends React.Component {
   constructor(props) {
@@ -13,19 +15,22 @@ class BlogPosts extends React.Component {
       // First list of posts.
       PostsListOne: [
         {
-          category: "Generate Generation",
+          category: "Generation Management",
           categoryTheme: "dark",
-          body: "Membuat Otomatis Angakatan Baru"
+          body: "Menambah & Mengubah biaya administrasi",
+          to: pushPath("generation-management")
         },
         {
           category: "Bedroom Manamagent",
           categoryTheme: "royal-blue",
-          body: "Menambah & Mengubah data kamar"
+          body: "Menambah & Mengubah data kamar",
+          to: pushPath("bedroom-management")
         },
         {
           category: "Class Management",
           categoryTheme: "warning",
-          body: "Menambah & Mengubah data kelas"
+          body: "Menambah & Mengubah data kelas",
+          to: pushPath("class-management")
         }
       ]
     };
@@ -49,7 +54,7 @@ class BlogPosts extends React.Component {
         {/* First Row of Posts */}
         <Row>
           {PostsListOne.map((post, idx) => (
-            <Col lg="3" md="6" sm="12" key={idx}>
+            <Col lg="3" md="6" sm="12" key={idx} tag={Link} to={post.to}>
               <Card small className="card-post card-post--1">
                 <Badge
                   pill
