@@ -37,11 +37,25 @@
 }
 
 .text-button {
-  cursor: pointer;
+  cursor: pointer !important;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
 }
 .text-button:hover {
+  cursor: pointer !important;
   filter: brightness(0.8);
+}
+
+.remove-button {
+  all: unset;
+}
+
+.remove-button:focus {
+  outline: none;
+}
+
+.remove-button[disabled] {
+  cursor: not-allowed;
+  filter: brightness(0);
 }

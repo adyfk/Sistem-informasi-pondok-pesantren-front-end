@@ -1,43 +1,64 @@
 import { useState, createContext, useEffect } from "react";
 import useRepository from "./useRepository";
 import { useToasts } from "react-toast-notifications";
-// const initParams = {
-//   page: 1,
-//   size: 10
-// };
 
-const defaultContext = {
-  loading: false,
-  generation: {
-    loading: false,
-    data: {}
-  }
-};
-
-export const CtxGenerationManagement = createContext(defaultContext);
+export const CtxGenerationManagement = createContext({
+  loading: {},
+  generation: {},
+  generationDetail: []
+});
 
 export default function useAction() {
-  const [loading, setLoading] = useState(defaultContext.loading);
-  const [generation, setGeneration] = useState(defaultContext.generation);
+  const [loading, setLoading] = useState({});
+  const [generation, setGeneration] = useState({});
+  const [generationDetail, setGenerationDetail] = useState([]);
+  const useEdit = useState(false);
   const { addToast } = useToasts();
   const repository = useRepository({
+    generation,
+    generationDetail,
+    useEdit,
     setLoading,
     setGeneration,
-    addToast
+    addToast,
+    setGenerationDetail
   });
 
-  const loadDataGenertion = () => {
+  useEffect(() => {
     repository.listGeneration();
+  }, []);
+
+  const setEmptyGenerationDetail = () => {
+    setGenerationDetail(prev => [...prev, {}]);
+    useEdit[1]("new");
+  };
+  const removeEmptyGenerationDetail = () => {
+    setGenerationDetail(prev => [...prev].filter(item => item.id));
   };
 
-  useEffect(() => {
-    loadDataGenertion();
-  }, []);
+  const saveFormDetailGeneration = ({ id, index }) => params => {
+    if (useEdit[0] === "new") {
+      repository.createGenerationDeatail({ index, params });
+    } else {
+      repository.updateGenerationDetail({ id, params });
+    }
+  };
+
+  const deleteGenerationDetail = ({ id }) => () => {
+    repository.deleteGenerationDeatail({ id });
+  };
 
   return {
     loading,
     generation,
+    repository,
+    useEdit,
+    generationDetail,
     setLoading,
-    setGeneration
+    setGeneration,
+    setEmptyGenerationDetail,
+    removeEmptyGenerationDetail,
+    saveFormDetailGeneration,
+    deleteGenerationDetail
   };
 }

@@ -1,19 +1,21 @@
-import React, { useContext, useMemo } from "react";
+import React, { useContext } from "react";
 import { Row, Col, Card, CardHeader, CardBody, Button } from "shards-react";
 
-import { schemaTable } from "../helper";
+import { schemaTable, sumCost } from "../helper";
 import { CtxGenerationManagement } from "../hooks/useAction";
+import ElementTableView from "./ElementTableView";
+import ElementTableEdit from "./ElementTableEdit";
 
 function TableGeneration() {
   const {
-    generation: { data }
+    useEdit,
+    generationDetail,
+    saveFormDetailGeneration,
+    setEmptyGenerationDetail,
+    removeEmptyGenerationDetail,
+    deleteGenerationDetail
   } = useContext(CtxGenerationManagement);
-  const total = useMemo(() =>
-    data?.GenerationDetails?.reduce(
-      (prev, curr) => curr.cost + prev,
-      0
-    ).toLocaleString()
-  );
+  const [edit, setEdit] = useEdit;
   return (
     <Row>
       <Col>
@@ -22,11 +24,16 @@ function TableGeneration() {
             <h6 className="m-0">
               Total Biaya{` - `}
               <span className="text-danger">
-                <small>Rp</small> {total}
+                <small>Rp</small> {sumCost(generationDetail).toLocaleString()}
               </span>
             </h6>
             <div>
-              <Button className="btn-warning text-white btn-sm" pill>
+              <Button
+                disabled={edit}
+                onClick={setEmptyGenerationDetail}
+                className="btn-info text-white btn-sm"
+                pill
+              >
                 Tambah List
               </Button>
               <Button className="btn-danger btn-sm ml-2">
@@ -50,24 +57,29 @@ function TableGeneration() {
                 </tr>
               </thead>
               <tbody>
-                {data?.GenerationDetails?.map((data, index) => (
-                  <tr>
-                    <td>{index + 1}</td>
-                    <td>{data.title}</td>
-                    <td>{data.description}</td>
-                    <td>
-                      <small>Rp</small> {data.cost?.toLocaleString()}
-                    </td>
-                    <td>
-                      <span className="material-icons text-warning text-button">
-                        create
-                      </span>
-                      <span className="material-icons text-danger text-button ml-4">
-                        delete
-                      </span>
-                    </td>
-                  </tr>
-                ))}
+                {generationDetail?.map((data, index) =>
+                  edit === index ||
+                  (edit === "new" && index + 1 === generationDetail.length) ? (
+                    <ElementTableEdit
+                      {...data}
+                      key={index}
+                      index={index + 1}
+                      onCencel={() => {
+                        edit === "new" && removeEmptyGenerationDetail();
+                        setEdit(false);
+                      }}
+                      onSave={saveFormDetailGeneration({ id: data?.id, index })}
+                    />
+                  ) : (
+                    <ElementTableView
+                      {...data}
+                      key={index}
+                      index={index + 1}
+                      onEdit={() => setEdit(index)}
+                      onDelete={deleteGenerationDetail({ id: data.id })}
+                    />
+                  )
+                )}
               </tbody>
             </table>
           </CardBody>

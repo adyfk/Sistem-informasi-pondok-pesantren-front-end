@@ -25,6 +25,18 @@ class Generation {
     uri: `${this.#url}/detail`
   });
 
+  createDetailGeneration = ({ params }) => ({
+    additionalHeader: {
+      Authorization: `Bearer ${getToken()}`
+    },
+    method: "post",
+    params: {
+      ...params,
+      cost: parseInt(params.cost)
+    },
+    uri: `${this.#url}/detail`
+  });
+
   updateDetailGeneration = ({ id, params }) => ({
     additionalHeader: {
       Authorization: `Bearer ${getToken()}`
@@ -34,12 +46,11 @@ class Generation {
     uri: `${this.#url}/detail/${id}`
   });
 
-  deleteDetailGeneration = ({ id, params }) => ({
+  deleteDetailGeneration = ({ id }) => ({
     additionalHeader: {
       Authorization: `Bearer ${getToken()}`
     },
     method: "delete",
-    params,
     uri: `${this.#url}/detail/${id}`
   });
 }
