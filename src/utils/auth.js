@@ -5,3 +5,7 @@ export const checkAuth = ({ auth, history }) => {
     history.push("/login");
   }
 };
+
+export const getToken = () => {
+  return lSgetItem({ name: "token" });
+};
