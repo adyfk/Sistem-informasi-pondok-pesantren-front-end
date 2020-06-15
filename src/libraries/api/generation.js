@@ -53,6 +53,14 @@ class Generation {
     method: "delete",
     uri: `${this.#url}/detail/${id}`
   });
+
+  generateNewGeneration = () => ({
+    additionalHeader: {
+      Authorization: `Bearer ${getToken()}`
+    },
+    method: "post",
+    uri: `${this.#url}/generate`
+  });
 }
 
 export default new Generation("generation");

@@ -12,6 +12,7 @@ import { ToastProvider } from "react-toast-notifications";
 
 export default () => (
   <ToastProvider
+    autoDismiss
     autoDismissTimeout={3000}
     // components={{ Toast: Snack }}
     placement="bottom-right"

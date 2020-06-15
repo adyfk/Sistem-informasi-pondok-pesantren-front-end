@@ -13,7 +13,8 @@ function TableGeneration() {
     saveFormDetailGeneration,
     setEmptyGenerationDetail,
     removeEmptyGenerationDetail,
-    deleteGenerationDetail
+    deleteGenerationDetail,
+    genereteNewGeneration
   } = useContext(CtxGenerationManagement);
   const [edit, setEdit] = useEdit;
   return (
@@ -36,7 +37,10 @@ function TableGeneration() {
               >
                 Tambah List
               </Button>
-              <Button className="btn-danger btn-sm ml-2">
+              <Button
+                onClick={genereteNewGeneration}
+                className="btn-danger btn-sm ml-2"
+              >
                 Buat Angakatan Baru
               </Button>
             </div>

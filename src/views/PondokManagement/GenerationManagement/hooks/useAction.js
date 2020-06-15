@@ -48,6 +48,8 @@ export default function useAction() {
     repository.deleteGenerationDeatail({ id });
   };
 
+  const genereteNewGeneration = repository.generateNewGeneration;
+
   return {
     loading,
     generation,
@@ -59,6 +61,7 @@ export default function useAction() {
     setEmptyGenerationDetail,
     removeEmptyGenerationDetail,
     saveFormDetailGeneration,
-    deleteGenerationDetail
+    deleteGenerationDetail,
+    genereteNewGeneration
   };
 }

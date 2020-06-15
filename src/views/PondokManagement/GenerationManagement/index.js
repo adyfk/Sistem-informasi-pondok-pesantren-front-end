@@ -14,9 +14,7 @@ const GenerationManagement = () => {
           <PageTitle
             sm="4"
             title="Generation Management"
-            subtitle={`Daftar Biaya angkatan ${action.generation.data?.id?.slice(
-              1
-            )}`}
+            subtitle={`Daftar Biaya angkatan ${action.generation.id?.slice(1)}`}
             className="text-sm-left"
           />
         </Row>

@@ -20,7 +20,6 @@ const useRepository = ({
       setGenerationDetail(GenerationDetails);
     } catch (error) {
       addToast(error?.message || "Gagal Mengambil data generation", {
-        autoDismiss: true,
         appearance: "error"
       });
     }
@@ -38,12 +37,10 @@ const useRepository = ({
       });
       setGenerationDetail(stateNew);
       addToast("Sukses update data detail generation", {
-        autoDismiss: true,
         appearance: "success"
       });
     } catch (error) {
       addToast(error?.message || "Gagal update data detail generation", {
-        autoDismiss: true,
         appearance: "error"
       });
     } finally {
@@ -63,12 +60,10 @@ const useRepository = ({
       });
       setGenerationDetail(stateNew);
       addToast("Sukses tambah data detail generation", {
-        autoDismiss: true,
         appearance: "success"
       });
     } catch (error) {
       addToast(error?.message || "Gagal tambah data detail generation", {
-        autoDismiss: true,
         appearance: "error"
       });
     } finally {
@@ -84,12 +79,10 @@ const useRepository = ({
       await callAPIs(configs);
       setGenerationDetail(generationDetail.filter(item => item.id !== id));
       addToast("Sukses hapus data detail generation", {
-        autoDismiss: true,
         appearance: "success"
       });
     } catch (error) {
       addToast(error?.message || "Gagal hapus data detail generation", {
-        autoDismiss: true,
         appearance: "error"
       });
     } finally {
@@ -98,11 +91,31 @@ const useRepository = ({
     }
   };
 
+  const generateNewGeneration = async () => {
+    const configs = Generation.generateNewGeneration();
+    setLoading(true);
+    let response;
+    try {
+      response = await callAPIs(configs);
+      const { GenerationDetails, ...generation } = response.data;
+      setGeneration(generation);
+      setGenerationDetail(GenerationDetails);
+      addToast(response?.message || "Sukse generate data generation", {
+        appearance: "success"
+      });
+    } catch (error) {
+      addToast(error?.message || "Gagal generate data generation", {
+        appearance: "error"
+      });
+    }
+  };
+
   return {
     listGeneration,
     createGenerationDeatail,
     updateGenerationDetail,
-    deleteGenerationDeatail
+    deleteGenerationDeatail,
+    generateNewGeneration
   };
 };
 
