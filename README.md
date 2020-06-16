@@ -1,17 +1,19 @@
-
-** install nodejs 
+\*\* install nodejs
 
     v 10 ^ keatas
 
-** pertama
+\*\* pertama
 
     npm i
 
+\*\* Tambah file .env
 
-** kedua
+AUTH_MIDDLEWARE=0
+
+\*\* kedua
 
     npm run start
 
-** code formater 
+\*\* code formater
 
     prettier
