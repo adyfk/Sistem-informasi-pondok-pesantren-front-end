@@ -18,7 +18,7 @@ class User {
     additionalHeader: {
       Authorization: `Bearer ${getToken()}`
     },
-    method: "profile",
+    method: "get",
     uri: `${this.#url}/profile`
   });
 }

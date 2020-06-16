@@ -12,8 +12,6 @@ import {
 
 import { lSclear } from "../../../../utils/localstorage";
 
-import { Store } from "../../../../flux";
-
 export default class UserActions extends React.Component {
   constructor(props) {
     super(props);
@@ -30,8 +28,8 @@ export default class UserActions extends React.Component {
       visible: !this.state.visible
     });
   }
-
   render() {
+    const { name } = this.props.profile;
     return (
       <NavItem tag={Dropdown} caret toggle={this.toggleUserActions}>
         <DropdownToggle caret tag={NavLink} className="text-nowrap px-3">
@@ -40,21 +38,10 @@ export default class UserActions extends React.Component {
             src={require("./../../../../images/avatars/0.jpg")}
             alt="User Avatar"
           />{" "}
-          <span className="d-none d-md-inline-block">
-            {Store.profileState.name}
-          </span>
+          <span className="d-none d-md-inline-block">{name}</span>
         </DropdownToggle>
         <Collapse tag={DropdownMenu} right small open={this.state.visible}>
-          {/* <DropdownItem tag={Link} to="user-profile">
-            <i className="material-icons">&#xE7FD;</i> Profile
-          </DropdownItem>
-          <DropdownItem tag={Link} to="edit-user-profile">
-            <i className="material-icons">&#xE8B8;</i> Edit Profile
-          </DropdownItem>
-          <DropdownItem tag={Link} to="file-manager-list">
-            <i className="material-icons">&#xE2C7;</i> Files
-          </DropdownItem>
-          <DropdownItem tag={Link} to="transaction-history">
+          {/*<DropdownItem tag={Link} to="transaction-history">
             <i className="material-icons">&#xE896;</i> Transactions
           </DropdownItem>
           <DropdownItem divider /> */}

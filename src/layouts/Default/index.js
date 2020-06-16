@@ -2,14 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Container, Row, Col } from "shards-react";
 
-import MainNavbar from "../components/layout/MainNavbar/MainNavbar";
-import MainSidebar from "../components/layout/MainSidebar/MainSidebar";
-import MainFooter from "../components/layout/MainFooter";
+import MainNavbar from "../../components/layout/MainNavbar/MainNavbar";
+import MainSidebar from "../../components/layout/MainSidebar/MainSidebar";
+import MainFooter from "../../components/layout/MainFooter";
+
+import useAction, { CtxUserProfile } from "./hooks/useAction";
 
 const DefaultLayout = ({
   children,
   layoutProps: { noNavbar, noSidebar, noFooter, fullWidth }
 }) => {
+  const action = useAction();
   const props = {
     lg: { size: 10, offset: 2 },
     md: { size: 9, offset: 3 },
@@ -24,16 +27,18 @@ const DefaultLayout = ({
     props.md.offset = 0;
   }
   return (
-    <Container fluid>
-      <Row>
-        {!noSidebar && <MainSidebar />}
-        <Col className="main-content p-0" {...props} tag="main">
-          {!noNavbar && <MainNavbar />}
-          {children}
-          {!noFooter && <MainFooter />}
-        </Col>
-      </Row>
-    </Container>
+    <CtxUserProfile.Provider value={action}>
+      <Container fluid>
+        <Row>
+          {!noSidebar && <MainSidebar />}
+          <Col className="main-content p-0" {...props} tag="main">
+            {!noNavbar && <MainNavbar />}
+            {children}
+            {!noFooter && <MainFooter />}
+          </Col>
+        </Row>
+      </Container>
+    </CtxUserProfile.Provider>
   );
 };
 DefaultLayout.propTypes = {
