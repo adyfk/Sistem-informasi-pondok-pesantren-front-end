@@ -14,7 +14,7 @@ export const callAPIs = ({ method, uri, params, additionalHeader }) => {
       const response = await axios(config);
       res(response.data);
     } catch (error) {
-      rej(error);
+      rej(error.response.data);
     }
   });
 };

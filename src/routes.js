@@ -8,10 +8,11 @@ import { DefaultLayout } from "./layouts";
 import Login from "./views/Login";
 import PondokManagement from "./views/PondokManagement";
 import GenerationManagement from "./views/PondokManagement/GenerationManagement";
+import BedroomManagement from "./views/PondokManagement/BedroomManagement";
 import SantriManagement from "./views/SantriManagement";
 import Payment from "./views/Payment";
-import BedroomManagement from "./views/BedroomManagement";
-import ClassManagement from "./views/ClassManagement";
+import BedroomSantri from "./views/BedroomSantri";
+import ClassSantri from "./views/ClassSantri";
 import NotFound from "./views/NotFound";
 import BlogOverview from "./views/BlogOverview";
 import UserProfileLite from "./views/UserProfileLite";
@@ -58,27 +59,37 @@ export default [
     path: rootUrl.pondokManagement,
     layout: DefaultLayout,
     component: PondokManagement,
+    auth: true,
     exact: true
   },
   {
     path: rootUrl.pondokManagement + "/generation-management",
     layout: DefaultLayout,
     component: GenerationManagement,
+    auth: true,
     exact: true
   },
   {
-    path: "/bedroom-management",
+    path: rootUrl.pondokManagement + "/bedroom-management",
     layout: DefaultLayout,
-    component: BedroomManagement
+    component: BedroomManagement,
+    auth: true,
+    exact: true
   },
   {
-    path: "/class-management",
+    path: "/bedroom-santri",
     layout: DefaultLayout,
-    component: ClassManagement
+    component: BedroomSantri
+  },
+  {
+    path: "/class-santri",
+    layout: DefaultLayout,
+    component: ClassSantri
   },
   {
     path: "/blog-overview",
     layout: DefaultLayout,
+    auth: true,
     component: BlogOverview
   },
   {

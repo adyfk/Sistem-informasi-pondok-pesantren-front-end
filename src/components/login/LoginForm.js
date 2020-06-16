@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -14,6 +14,7 @@ import {
   Col,
   FormFeedback
 } from "shards-react";
+import { CtxUser } from "../../views/Login/hooks/useAction";
 
 const SignInSchema = yup.object().shape({
   username: yup.string().required(),
@@ -24,11 +25,20 @@ const SignInSchema = yup.object().shape({
 });
 
 const LoginForm = ({ userDetails }) => {
-  const { register, handleSubmit, errors } = useForm({
+  const { repository } = useContext(CtxUser)
+  const { register, handleSubmit, errors, setError } = useForm({
     validationSchema: SignInSchema
   });
-  console.log("error", errors);
-  const onSubmit = data => console.log("submit", data);
+  const onSubmit = async(params) => {
+    try {
+      await repository.login(params)
+      console.log('sukses')
+      window.location.href = '/'
+    } catch (error) {
+      console.log(error)
+      setError(error)
+    }
+  }
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Card small className="py-3">

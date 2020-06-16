@@ -5,10 +5,16 @@ export default function useForm({ defaultValues = {}, schema = false }) {
   const [values, setValues] = useState(defaultValues);
   const [valid, setValid] = useState(true);
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setSubmitting] = useState(false);
+  const [submitTrigger, setSubmiTrigger] = useState(0);
 
   useEffect(() => {
     setValid(isEmpty(errors));
   }, [errors]);
+
+  useEffect(() => {
+    if (isSubmitting) setSubmiTrigger(prev => prev + 1);
+  }, [isSubmitting]);
 
   useEffect(() => {
     if (schema !== false) {
@@ -47,10 +53,12 @@ export default function useForm({ defaultValues = {}, schema = false }) {
   };
 
   const handleSubmit = onSubmit => e => {
+    setSubmitting(true);
     schema
       .validate(values, { abortEarly: false })
       .then(() => {
         onSubmit(values);
+        setSubmitting(false);
       })
       .catch(err => {
         const errors = {};
@@ -60,6 +68,7 @@ export default function useForm({ defaultValues = {}, schema = false }) {
           });
           setErrors(errors);
         }
+        setSubmitting(false);
       });
 
     e.preventDefault();
@@ -74,6 +83,8 @@ export default function useForm({ defaultValues = {}, schema = false }) {
     setError,
     onChange,
     onChangeN,
+    isSubmitting,
+    submitTrigger,
     handleSubmit
   };
 }
