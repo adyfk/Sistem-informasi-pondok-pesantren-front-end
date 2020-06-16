@@ -1,6 +1,10 @@
+import dotenv from 'dotenv'
 import { lSgetItem, lSsetItem } from "./localstorage";
+dotenv.config()
 
 export const checkAuth = ({ auth, history }) => {
+  if(process.env.AUTH_MIDDLEWARE==='0')
+    return  
   if (auth && !lSgetItem({ name: "token" })) {
     history.push("/login");
   }
