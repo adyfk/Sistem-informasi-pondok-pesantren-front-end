@@ -9,6 +9,7 @@ import Login from "./views/Login";
 import PondokManagement from "./views/PondokManagement";
 import GenerationManagement from "./views/PondokManagement/GenerationManagement";
 import BedroomManagement from "./views/PondokManagement/BedroomManagement";
+import ClassManagement from "./views/PondokManagement/ClassManagement";
 import SantriManagement from "./views/SantriManagement";
 import Payment from "./views/Payment";
 import BedroomSantri from "./views/BedroomSantri";
@@ -73,6 +74,13 @@ export default [
     path: rootUrl.pondokManagement + "/bedroom-management",
     layout: DefaultLayout,
     component: BedroomManagement,
+    auth: true,
+    exact: true
+  },
+  {
+    path: rootUrl.pondokManagement + "/class-management",
+    layout: DefaultLayout,
+    component: ClassManagement,
     auth: true,
     exact: true
   },

@@ -2,30 +2,30 @@ import React, { useContext } from "react";
 import { Row, Col, Card, CardHeader, CardBody, Button } from "shards-react";
 
 import { schemaTable } from "../helper";
-import { CtxBedroom } from "../hooks/useAction";
+import { CtxClass } from "../hooks/useAction";
 import ElementTableView from "./ElementTableView";
 import ElementTableEdit from "./ElementTableEdit";
 import { isEditTable } from "../../../../utils/global";
 
-function Tablebedroom() {
+function Tableclass() {
   const {
     useEdit,
-    bedroom,
-    setEmptyBedroom,
-    saveFormBedroom,
-    removeEmptyBedroom
-  } = useContext(CtxBedroom);
+    classes,
+    setEmptyClass,
+    saveFormClass,
+    removeEmptyClass
+  } = useContext(CtxClass);
   const [edit, setEdit] = useEdit;
   return (
     <Row>
       <Col>
         <Card small className="mb-4">
           <CardHeader className="border-bottom d-flex justify-content-between">
-            <h6 className="m-0">Total Kamar {bedroom?.length}</h6>
+            <h6 className="m-0">Total Kamar {classes?.length}</h6>
             <div>
               <Button
                 disabled={edit === "new" || edit !== false}
-                onClick={setEmptyBedroom}
+                onClick={setEmptyClass}
                 className="btn-info text-white btn-sm"
                 pill
               >
@@ -49,17 +49,17 @@ function Tablebedroom() {
                 </tr>
               </thead>
               <tbody>
-                {bedroom?.map((data, index) => {
-                  return isEditTable({ edit, index, data: bedroom }) ? (
+                {classes?.map((data, index) => {
+                  return isEditTable({ edit, index, data: classes }) ? (
                     <ElementTableEdit
                       {...data}
                       key={index}
                       index={index + 1}
                       onCencel={() => {
-                        edit === "new" && removeEmptyBedroom();
+                        edit === "new" && removeEmptyClass();
                         setEdit(false);
                       }}
-                      onSave={saveFormBedroom({ id: data?.id, index })}
+                      onSave={saveFormClass({ id: data?.id, index })}
                     />
                   ) : (
                     <ElementTableView
@@ -79,4 +79,4 @@ function Tablebedroom() {
   );
 }
 
-export default Tablebedroom;
+export default Tableclass;
