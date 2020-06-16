@@ -1,17 +1,17 @@
 
-* install nodejs 
+** install nodejs 
 
-v 10 ^ keatas
+    v 10 ^ keatas
 
-* pertama
+** pertama
 
     npm i
 
 
-* kedua
+** kedua
 
     npm run start
 
-* code formater 
+** code formater 
 
-    eslint
+    prettier
