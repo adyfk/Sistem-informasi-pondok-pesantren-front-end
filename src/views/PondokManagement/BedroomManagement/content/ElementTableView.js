@@ -1,33 +1,21 @@
 import React from "react";
 
-function ElementTableView({
-  index,
-  title,
-  description,
-  cost,
-  onEdit,
-  onDelete
-}) {
+function ElementTableView({ index, title, gender, capacity, onEdit }) {
   return (
     <tr>
       <td>{index}</td>
       <td>{title}</td>
-      <td>{description}</td>
+      <td>{gender === "P" ? "Perempuan" : "Laki-laki"}</td>
       <td>
-        <small>Rp</small> {cost?.toLocaleString()}
+        {capacity + ` `}
+        <small>Orang</small>
       </td>
-      <td>
+      <td className="d-flex flex-nowrap">
         <span
           onClick={onEdit}
           className="material-icons text-warning text-button"
         >
           create
-        </span>
-        <span
-          onClick={onDelete}
-          className="material-icons text-danger text-button ml-4"
-        >
-          delete
         </span>
       </td>
     </tr>

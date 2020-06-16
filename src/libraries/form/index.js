@@ -9,7 +9,11 @@ export default function useForm({ defaultValues = {}, schema = false }) {
   const [submitTrigger, setSubmiTrigger] = useState(0);
 
   useEffect(() => {
-    setValid(isEmpty(errors));
+    if (isEmpty(errors)) {
+      valid || setValid(true);
+    } else {
+      valid && setValid(false);
+    }
   }, [errors]);
 
   useEffect(() => {
@@ -20,7 +24,7 @@ export default function useForm({ defaultValues = {}, schema = false }) {
     if (schema !== false) {
       schema
         .validate(values, { abortEarly: false })
-        .then(() => setErrors({}))
+        .then(() => isEmpty(errors) || setErrors({}))
         .catch(err => {
           const errors = {};
           err.inner.forEach(error => {

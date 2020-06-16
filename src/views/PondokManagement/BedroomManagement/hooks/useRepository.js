@@ -1,46 +1,43 @@
 import { callAPIs } from "../../../../config/network";
-import { Generation } from "../../../../libraries/api";
+import { Bedroom } from "../../../../libraries/api";
 import produce from "immer";
 
 const useRepository = ({
   useEdit,
-  generationDetail,
-  setGeneration,
-  setGenerationDetail,
+  bedroom,
+  setBedroom,
   setLoading,
   addToast
 }) => {
-  const listGeneration = async () => {
-    const configs = Generation.getGeneration();
+  const listBedroom = async () => {
+    const configs = Bedroom.getBedroom();
     let response;
     try {
       response = await callAPIs(configs);
-      const { GenerationDetails, ...generation } = response.data;
-      setGeneration(generation);
-      setGenerationDetail(GenerationDetails);
+      setBedroom(response.data)
     } catch (error) {
-      addToast(error?.message || "Gagal Mengambil data generation", {
+      addToast(error?.message || "Gagal Mengambil data bedroom", {
         appearance: "error"
       });
     }
-  };
+  }
 
-  const updateGenerationDetail = async ({ id, params }) => {
-    const configs = Generation.updateDetailGeneration({ id, params });
+  const updateBedroom = async ({ id, params }) => {
+    const configs = Bedroom.updateBedroom({ id, params });
     let response;
     setLoading(true);
     try {
       response = await callAPIs(configs);
-      const stateNew = produce(generationDetail, tempGenerationDetail => {
-        const index = tempGenerationDetail.findIndex(data => data.id === id);
-        tempGenerationDetail[index] = response.data;
+      const stateNew = produce(bedroom, tempBedroom => {
+        const index = tempBedroom.findIndex(data => data.id === id);
+        tempBedroom[index] = response.data;
       });
-      setGenerationDetail(stateNew);
-      addToast("Sukses update data detail generation", {
+      setBedroom(stateNew);
+      addToast("Sukses update data  bedroom", {
         appearance: "success"
       });
     } catch (error) {
-      addToast(error?.message || "Gagal update data detail generation", {
+      addToast(error?.message || "Gagal update data  bedroom", {
         appearance: "error"
       });
     } finally {
@@ -49,73 +46,33 @@ const useRepository = ({
     }
   };
 
-  const createGenerationDeatail = async ({ index, params }) => {
-    const configs = Generation.createDetailGeneration({ params });
+  const createBedroom = async ({ index, params }) => {
+    const configs = Bedroom.createBedroom({ params });
     let response;
     setLoading(true);
     try {
       response = await callAPIs(configs);
-      const stateNew = produce(generationDetail, tempGenerationDetail => {
-        tempGenerationDetail[index] = response.data;
+      const stateNew = produce(bedroom, tempBedroom => {
+        tempBedroom[index] = response.data;
       });
-      setGenerationDetail(stateNew);
-      addToast("Sukses tambah data detail generation", {
+      setBedroom(stateNew);
+      addToast("Sukses tambah data  bedroom", {
         appearance: "success"
       });
     } catch (error) {
-      addToast(error?.message || "Gagal tambah data detail generation", {
+      addToast(error?.message || "Gagal tambah data  bedroom", {
         appearance: "error"
       });
     } finally {
       setLoading(false);
       useEdit[1](false);
-    }
-  };
-
-  const deleteGenerationDeatail = async ({ id }) => {
-    const configs = Generation.deleteDetailGeneration({ id });
-    setLoading(true);
-    try {
-      await callAPIs(configs);
-      setGenerationDetail(generationDetail.filter(item => item.id !== id));
-      addToast("Sukses hapus data detail generation", {
-        appearance: "success"
-      });
-    } catch (error) {
-      addToast(error?.message || "Gagal hapus data detail generation", {
-        appearance: "error"
-      });
-    } finally {
-      setLoading(false);
-      useEdit[1](false);
-    }
-  };
-
-  const generateNewGeneration = async () => {
-    const configs = Generation.generateNewGeneration();
-    setLoading(true);
-    let response;
-    try {
-      response = await callAPIs(configs);
-      const { GenerationDetails, ...generation } = response.data;
-      setGeneration(generation);
-      setGenerationDetail(GenerationDetails);
-      addToast(response?.message || "Sukse generate data generation", {
-        appearance: "success"
-      });
-    } catch (error) {
-      addToast(error?.message || "Gagal generate data generation", {
-        appearance: "error"
-      });
     }
   };
 
   return {
-    listGeneration,
-    createGenerationDeatail,
-    updateGenerationDetail,
-    deleteGenerationDeatail,
-    generateNewGeneration
+    listBedroom,
+    createBedroom,
+    updateBedroom,
   };
 };
 

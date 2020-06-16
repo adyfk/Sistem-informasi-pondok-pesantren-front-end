@@ -16,7 +16,7 @@ function ElementTableView({
       <td>
         <small>Rp</small> {cost?.toLocaleString()}
       </td>
-      <td>
+      <td className="d-flex flex-nowrap">
         <span
           onClick={onEdit}
           className="material-icons text-warning text-button"

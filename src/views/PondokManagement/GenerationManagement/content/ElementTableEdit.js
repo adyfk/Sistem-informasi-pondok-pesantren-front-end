@@ -77,7 +77,7 @@ function ElementTableEdit({
             )}
           </InputGroup>
         </td>
-        <td>
+        <td className="d-flex flex-nowrap">
           <span
             onClick={onCencel}
             className="material-icons text-danger text-button"
@@ -89,7 +89,7 @@ function ElementTableEdit({
             className="remove-button  ml-4"
           >
             <span className="material-icons text-primary text-button">
-              save_alt
+              save
             </span>
           </button>
         </td>

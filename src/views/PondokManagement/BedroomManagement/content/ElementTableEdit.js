@@ -1,31 +1,34 @@
 import React from "react";
-import { InputGroup, FormInput, FormFeedback } from "shards-react";
+import { InputGroup, FormInput, FormFeedback, FormSelect } from "shards-react";
 import * as yup from "yup";
 import useForm from "../../../../libraries/form";
 
-const GenerationDetailSchema = yup.object().shape({
+const BedroomSchema = yup.object().shape({
   title: yup.string().required(),
-  description: yup.string().required(),
-  cost: yup.number().required()
+  gender: yup
+    .string()
+    .max(1)
+    .required(),
+  capacity: yup.number().required()
 });
 
 function ElementTableEdit({
   index,
   title,
-  description,
-  cost,
+  gender,
+  capacity,
   onCencel,
   onSave
 }) {
   const { errors, values, onChange, handleSubmit } = useForm({
     defaultValues: {
       title,
-      description,
-      cost
+      gender,
+      capacity
     },
-    schema: GenerationDetailSchema
+    schema: BedroomSchema
   });
-
+  console.log(errors);
   return (
     <React.Fragment>
       <tr>
@@ -49,35 +52,38 @@ function ElementTableEdit({
         </td>
         <td>
           <InputGroup>
-            <FormInput
-              invalid={Boolean(errors["description"])}
+            <FormSelect
+              invalid={Boolean(errors["gender"])}
               type="text"
-              name="description"
-              value={values["description"]}
-              placeholder="Description"
+              name="gender"
+              value={values["gender"]}
+              placeholder="Gender"
               onChange={onChange}
-            />
-            {errors["description"] && (
-              <FormFeedback>{errors["description"].message}</FormFeedback>
+            >
+              <option value="L">Laki-laki</option>
+              <option value="P">Perempuan</option>
+            </FormSelect>
+            {errors["gender"] && (
+              <FormFeedback>{errors["gender"].message}</FormFeedback>
             )}
           </InputGroup>
         </td>
         <td>
           <InputGroup>
             <FormInput
-              invalid={Boolean(errors["cost"])}
+              invalid={Boolean(errors["capacity"])}
               type="text"
-              name="cost"
-              value={values["cost"]}
-              placeholder="Cost"
+              name="capacity"
+              value={values["capacity"]}
+              placeholder="Capacity"
               onChange={onChange}
             />
-            {errors["cost"] && (
-              <FormFeedback>{errors["cost"].message}</FormFeedback>
+            {errors["capacity"] && (
+              <FormFeedback>{errors["capacity"].message}</FormFeedback>
             )}
           </InputGroup>
         </td>
-        <td>
+        <td className="d-flex flex-nowrap">
           <span
             onClick={onCencel}
             className="material-icons text-danger text-button"
@@ -89,7 +95,7 @@ function ElementTableEdit({
             className="remove-button  ml-4"
           >
             <span className="material-icons text-primary text-button">
-              save_alt
+              save
             </span>
           </button>
         </td>

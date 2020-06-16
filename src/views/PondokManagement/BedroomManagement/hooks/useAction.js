@@ -2,66 +2,52 @@ import { useState, createContext, useEffect } from "react";
 import useRepository from "./useRepository";
 import { useToasts } from "react-toast-notifications";
 
-export const CtxGenerationManagement = createContext({
+export const CtxBedroom = createContext({
   loading: {},
-  generation: {},
-  generationDetail: []
+  bedroom: []
 });
 
 export default function useAction() {
   const [loading, setLoading] = useState({});
-  const [generation, setGeneration] = useState({});
-  const [generationDetail, setGenerationDetail] = useState([]);
+  const [bedroom, setBedroom] = useState([]);
   const useEdit = useState(false);
   const { addToast } = useToasts();
   const repository = useRepository({
-    generation,
-    generationDetail,
+    bedroom,
     useEdit,
     setLoading,
-    setGeneration,
     addToast,
-    setGenerationDetail
+    setBedroom
   });
 
   useEffect(() => {
-    repository.listGeneration();
+    repository.listBedroom();
   }, []);
 
-  const setEmptyGenerationDetail = () => {
-    setGenerationDetail(prev => [...prev, {}]);
+  const setEmptyBedroom = () => {
+    setBedroom(prev => [...prev, {}]);
     useEdit[1]("new");
   };
-  const removeEmptyGenerationDetail = () => {
-    setGenerationDetail(prev => [...prev].filter(item => item.id));
+  const removeEmptyBedroom = () => {
+    setBedroom(prev => [...prev].filter(item => item.id));
   };
 
-  const saveFormDetailGeneration = ({ id, index }) => params => {
+  const saveFormBedroom = ({ id, index }) => params => {
     if (useEdit[0] === "new") {
-      repository.createGenerationDeatail({ index, params });
+      repository.createBedroom({ index, params });
     } else {
-      repository.updateGenerationDetail({ id, params });
+      repository.updateBedroom({ id, params });
     }
   };
 
-  const deleteGenerationDetail = ({ id }) => () => {
-    repository.deleteGenerationDeatail({ id });
-  };
-
-  const genereteNewGeneration = repository.generateNewGeneration;
-
   return {
     loading,
-    generation,
     repository,
     useEdit,
-    generationDetail,
+    bedroom,
     setLoading,
-    setGeneration,
-    setEmptyGenerationDetail,
-    removeEmptyGenerationDetail,
-    saveFormDetailGeneration,
-    deleteGenerationDetail,
-    genereteNewGeneration
+    setEmptyBedroom,
+    removeEmptyBedroom,
+    saveFormBedroom
   };
 }

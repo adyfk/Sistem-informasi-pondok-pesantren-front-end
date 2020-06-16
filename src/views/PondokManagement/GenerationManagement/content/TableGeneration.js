@@ -5,6 +5,7 @@ import { schemaTable, sumCost } from "../helper";
 import { CtxGenerationManagement } from "../hooks/useAction";
 import ElementTableView from "./ElementTableView";
 import ElementTableEdit from "./ElementTableEdit";
+import { isEditTable } from "../../../../utils/global";
 
 function TableGeneration() {
   const {
@@ -30,7 +31,7 @@ function TableGeneration() {
             </h6>
             <div>
               <Button
-                disabled={edit}
+                disabled={edit === "new" || edit !== false}
                 onClick={setEmptyGenerationDetail}
                 className="btn-info text-white btn-sm"
                 pill
@@ -62,8 +63,7 @@ function TableGeneration() {
               </thead>
               <tbody>
                 {generationDetail?.map((data, index) =>
-                  edit === index ||
-                  (edit === "new" && index + 1 === generationDetail.length) ? (
+                  isEditTable({ edit, index, data: generationDetail }) ? (
                     <ElementTableEdit
                       {...data}
                       key={index}

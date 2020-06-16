@@ -1,47 +1,35 @@
 import React, { useContext } from "react";
 import { Row, Col, Card, CardHeader, CardBody, Button } from "shards-react";
 
-import { schemaTable, sumCost } from "../helper";
-import { CtxGenerationManagement } from "../hooks/useAction";
+import { schemaTable } from "../helper";
+import { CtxBedroom } from "../hooks/useAction";
 import ElementTableView from "./ElementTableView";
 import ElementTableEdit from "./ElementTableEdit";
+import { isEditTable } from "../../../../utils/global";
 
-function TableGeneration() {
+function Tablebedroom() {
   const {
     useEdit,
-    generationDetail,
-    saveFormDetailGeneration,
-    setEmptyGenerationDetail,
-    removeEmptyGenerationDetail,
-    deleteGenerationDetail,
-    genereteNewGeneration
-  } = useContext(CtxGenerationManagement);
+    bedroom,
+    setEmptyBedroom,
+    saveFormBedroom,
+    removeEmptyBedroom
+  } = useContext(CtxBedroom);
   const [edit, setEdit] = useEdit;
   return (
     <Row>
       <Col>
         <Card small className="mb-4">
           <CardHeader className="border-bottom d-flex justify-content-between">
-            <h6 className="m-0">
-              Total Biaya{` - `}
-              <span className="text-danger">
-                <small>Rp</small> {sumCost(generationDetail).toLocaleString()}
-              </span>
-            </h6>
+            <h6 className="m-0">Total Kamar {bedroom?.length}</h6>
             <div>
               <Button
-                disabled={edit}
-                onClick={setEmptyGenerationDetail}
+                disabled={edit === "new" || edit !== false}
+                onClick={setEmptyBedroom}
                 className="btn-info text-white btn-sm"
                 pill
               >
                 Tambah List
-              </Button>
-              <Button
-                onClick={genereteNewGeneration}
-                className="btn-danger btn-sm ml-2"
-              >
-                Buat Angakatan Baru
               </Button>
             </div>
           </CardHeader>
@@ -61,18 +49,17 @@ function TableGeneration() {
                 </tr>
               </thead>
               <tbody>
-                {generationDetail?.map((data, index) =>
-                  edit === index ||
-                  (edit === "new" && index + 1 === generationDetail.length) ? (
+                {bedroom?.map((data, index) => {
+                  return isEditTable({ edit, index, data: bedroom }) ? (
                     <ElementTableEdit
                       {...data}
                       key={index}
                       index={index + 1}
                       onCencel={() => {
-                        edit === "new" && removeEmptyGenerationDetail();
+                        edit === "new" && removeEmptyBedroom();
                         setEdit(false);
                       }}
-                      onSave={saveFormDetailGeneration({ id: data?.id, index })}
+                      onSave={saveFormBedroom({ id: data?.id, index })}
                     />
                   ) : (
                     <ElementTableView
@@ -80,10 +67,9 @@ function TableGeneration() {
                       key={index}
                       index={index + 1}
                       onEdit={() => setEdit(index)}
-                      onDelete={deleteGenerationDetail({ id: data.id })}
                     />
-                  )
-                )}
+                  );
+                })}
               </tbody>
             </table>
           </CardBody>
@@ -93,4 +79,4 @@ function TableGeneration() {
   );
 }
 
-export default TableGeneration;
+export default Tablebedroom;
