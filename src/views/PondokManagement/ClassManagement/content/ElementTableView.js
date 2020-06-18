@@ -1,4 +1,5 @@
 import React from "react";
+import { toLocalString } from "../../../../utils/string";
 
 function ElementTableView({ index, title, cost, onEdit }) {
   return (
@@ -7,7 +8,7 @@ function ElementTableView({ index, title, cost, onEdit }) {
       <td>{title}</td>
       <td>
         <small>Rp</small>
-        {` ` + cost}
+        {` ` + toLocalString(cost)}
       </td>
       <td className="d-flex flex-nowrap">
         <span

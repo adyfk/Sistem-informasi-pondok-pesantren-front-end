@@ -13,8 +13,8 @@ const BedroomManagement = () => {
         <Row noGutters className="page-header py-4">
           <PageTitle
             sm="4"
-            title="Bedroom Management"
-            subtitle={`List kamar santri`}
+            title="Class Management"
+            subtitle={`List kelas santri`}
             className="text-sm-left"
           />
         </Row>
