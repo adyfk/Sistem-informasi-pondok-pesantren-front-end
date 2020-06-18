@@ -14,7 +14,7 @@ export const callAPIs = ({ method, uri, params, additionalHeader }) => {
       const response = await axios(config);
       res(response.data);
     } catch (error) {
-      error.response?.status === 401 && (window.location.href = '/login')
+      error.response?.status === 401 && (window.location.href = "/login");
       rej(error.response?.data);
     }
   });
