@@ -11,6 +11,7 @@ import GenerationManagement from "./views/PondokManagement/GenerationManagement"
 import BedroomManagement from "./views/PondokManagement/BedroomManagement";
 import ClassManagement from "./views/PondokManagement/ClassManagement";
 import SantriManagement from "./views/SantriManagement";
+import TambahSantriManagement from "./views/TambahSantri";
 import Payment from "./views/Payment";
 import BedroomSantri from "./views/BedroomSantri";
 import ClassSantri from "./views/ClassSantri";
@@ -49,7 +50,14 @@ export default [
   {
     path: "/santri-management",
     layout: DefaultLayout,
+    exact: true,
     component: SantriManagement
+  },
+  {
+    path: "/santri-management/tambah",
+    exact: true,
+    layout: DefaultLayout,
+    component: TambahSantriManagement
   },
   {
     path: "/payment",

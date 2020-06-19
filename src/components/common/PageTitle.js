@@ -28,7 +28,12 @@ const PageTitle = ({
 
   return (
     <React.Fragment>
-      <Col sm="4" className={classes} {...attrs}>
+      <Col
+        lg={Boolean(right) ? "5" : "12"}
+        sm="4"
+        className={classes}
+        {...attrs}
+      >
         <span className="text-uppercase page-subtitle">{subtitle}</span>
         <h3 className="page-title">{title}</h3>
       </Col>
