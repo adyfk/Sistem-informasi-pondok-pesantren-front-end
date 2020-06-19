@@ -26,7 +26,7 @@ function TableBedroom() {
               <Button
                 disabled={edit === "new" || edit !== false}
                 onClick={setEmptyBedroom}
-                className="btn-info text-white btn-sm"
+                className="btn-primary text-white btn-sm"
                 pill
               >
                 Tambah List

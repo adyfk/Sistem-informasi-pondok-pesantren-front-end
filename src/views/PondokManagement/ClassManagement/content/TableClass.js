@@ -26,7 +26,7 @@ function Tableclass() {
               <Button
                 disabled={edit === "new" || edit !== false}
                 onClick={setEmptyClass}
-                className="btn-info text-white btn-sm"
+                className="btn-primary text-white btn-sm"
                 pill
               >
                 Tambah List

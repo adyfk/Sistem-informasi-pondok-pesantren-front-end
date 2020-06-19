@@ -33,7 +33,7 @@ function TableGeneration() {
               <Button
                 disabled={edit === "new" || edit !== false}
                 onClick={setEmptyGenerationDetail}
-                className="btn-info text-white btn-sm"
+                className="btn-primary text-white btn-sm"
                 pill
               >
                 Tambah List

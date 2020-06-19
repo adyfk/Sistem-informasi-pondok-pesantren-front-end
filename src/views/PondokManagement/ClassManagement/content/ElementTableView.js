@@ -10,7 +10,7 @@ function ElementTableView({ index, title, cost, onEdit }) {
         <small>Rp</small>
         {` ` + toLocalString(cost)}
       </td>
-      <td className="d-flex flex-nowrap">
+      <td>
         <span
           onClick={onEdit}
           className="material-icons text-warning text-button"

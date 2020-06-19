@@ -8,7 +8,7 @@ const useRepository = ({ addToast, setProfile }) => {
       const response = await callAPIs(configs);
       setProfile(response.data);
     } catch (e) {
-      addToast(e.message || "Gagal get profile user", {
+      addToast(e?.message || "Gagal get profile user", {
         appearance: "error"
       });
     }

@@ -10,7 +10,7 @@ function ElementTableView({ index, title, gender, capacity, onEdit }) {
         {capacity + ` `}
         <small>Orang</small>
       </td>
-      <td className="d-flex flex-nowrap">
+      <td>
         <span
           onClick={onEdit}
           className="material-icons text-warning text-button"

@@ -16,19 +16,21 @@ function ElementTableView({
       <td>
         <small>Rp</small> {cost?.toLocaleString()}
       </td>
-      <td className="d-flex flex-nowrap">
-        <span
-          onClick={onEdit}
-          className="material-icons text-warning text-button"
-        >
-          create
-        </span>
-        <span
-          onClick={onDelete}
-          className="material-icons text-danger text-button ml-4"
-        >
-          delete
-        </span>
+      <td>
+        <div className="d-flex flex-nowrap">
+          <span
+            onClick={onEdit}
+            className="material-icons text-warning text-button"
+          >
+            create
+          </span>
+          <span
+            onClick={onDelete}
+            className="material-icons text-danger text-button ml-4"
+          >
+            delete
+          </span>
+        </div>
       </td>
     </tr>
   );
