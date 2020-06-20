@@ -8,12 +8,12 @@ class Bedroom {
     this.#url = `${BASE_URL + path}`;
   }
 
-  getBedroom = () => ({
+  getBedroom = (id = "") => ({
     additionalHeader: {
       Authorization: `Bearer ${getToken()}`
     },
     method: "get",
-    uri: `${this.#url}/`
+    uri: `${this.#url}/${id}`
   });
 
   createBedroom = ({ params }) => ({
@@ -36,7 +36,6 @@ class Bedroom {
     params,
     uri: `${this.#url}/${id}`
   });
-
 }
 
 export default new Bedroom("bedroom");

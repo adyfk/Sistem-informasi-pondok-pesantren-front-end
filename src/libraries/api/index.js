@@ -4,5 +4,6 @@ import Classx from "./class";
 import Bedroom from "./bedroom";
 import Address from "./address";
 import Santri from "./santri";
+import BedroomStudent from "./bedroom-student";
 
-export { Generation, User, Bedroom, Classx, Address, Santri };
+export { Generation, User, Bedroom, Classx, Address, Santri, BedroomStudent };

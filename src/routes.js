@@ -13,6 +13,7 @@ import ClassManagement from "./views/PondokManagement/ClassManagement";
 import SantriManagement from "./views/SantriManagement";
 import TambahSantriManagement from "./views/FormTambahSantri";
 import Payment from "./views/Payment";
+import BedroomStudent from "./views/BedroomSantri";
 import BedroomSantri from "./views/BedroomSantri";
 import ClassSantri from "./views/ClassSantri";
 import NotFound from "./views/NotFound";
@@ -82,6 +83,13 @@ export default [
     path: rootUrl.pondokManagement + "/bedroom-management",
     layout: DefaultLayout,
     component: BedroomManagement,
+    auth: true,
+    exact: true
+  },
+  {
+    path: rootUrl.pondokManagement + "/bedroom-management/santri",
+    layout: DefaultLayout,
+    component: BedroomStudent,
     auth: true,
     exact: true
   },
