@@ -1,7 +1,6 @@
 import { useState, createContext, useEffect } from "react";
 import useRepository from "./useRepository";
 import { useToasts } from "react-toast-notifications";
-import { queryParams } from "../../../utils/api";
 export const CtxSantriManagement = createContext({
   loading: {},
   santris: {
@@ -43,11 +42,10 @@ export default function useAction() {
   }, [santris.pages]);
 
   const getListSantri = () => {
-    const params = queryParams({
+    repository.listSantri({
       page: santris.pages,
       search
     });
-    repository.listSantri(params);
   };
 
   return {

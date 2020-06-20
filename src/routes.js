@@ -11,7 +11,7 @@ import GenerationManagement from "./views/PondokManagement/GenerationManagement"
 import BedroomManagement from "./views/PondokManagement/BedroomManagement";
 import ClassManagement from "./views/PondokManagement/ClassManagement";
 import SantriManagement from "./views/SantriManagement";
-import TambahSantriManagement from "./views/TambahSantri";
+import TambahSantriManagement from "./views/FormTambahSantri";
 import Payment from "./views/Payment";
 import BedroomSantri from "./views/BedroomSantri";
 import ClassSantri from "./views/ClassSantri";

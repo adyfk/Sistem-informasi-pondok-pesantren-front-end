@@ -4,6 +4,7 @@ import { Row, Col, Card, CardHeader, CardBody, Button } from "shards-react";
 import { schemaTable } from "../helper";
 import { CtxSantriManagement } from "../hooks/useAction";
 import ElementTableView from "./ElementTableView";
+import { Link } from "react-router-dom";
 
 function TableSantri() {
   const { santris } = useContext(CtxSantriManagement);
@@ -24,6 +25,8 @@ function TableSantri() {
                 Filter
               </Button>
               <Button
+                tag={Link}
+                to="/santri-management/tambah"
                 onClick={() => ""}
                 className="btn-primary text-white btn-sm"
                 pill

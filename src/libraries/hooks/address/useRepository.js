@@ -1,6 +1,5 @@
-import { callAPIs } from "../../../../config/network";
-import { Address } from "../../../api";
-import { queryParams } from "../../../../utils/api";
+import { callAPIs } from "../../../config/network";
+import { Address } from "../../api";
 // import produce from "immer";
 
 const useRepository = ({
@@ -11,12 +10,14 @@ const useRepository = ({
   addToast
 }) => {
   const getProvince = async () => {
-    const configs = Address.getProvince()();
+    const configs = Address.province();
     let response;
     try {
       setLoading({ province: true });
       response = await callAPIs(configs);
-      setProvince(response.data);
+      setProvince(
+        response.data?.map(item => ({ value: item.id, label: item.nama })) || []
+      );
     } catch (error) {
       addToast(error?.message || "Gagal Mengambil data province", {
         appearance: "error"
@@ -26,15 +27,14 @@ const useRepository = ({
     }
   };
   const getDorp = async ({ provinceId }) => {
-    const params = queryParams({
-      provinceId
-    });
-    const configs = Address.getDrop({ params });
+    const configs = Address.dorp({ params: { provinceId } });
     let response;
     try {
       setLoading({ dorp: true });
       response = await callAPIs(configs);
-      setDorp(response.data);
+      setDorp(
+        response.data?.map(item => ({ value: item.id, label: item.nama })) || []
+      );
     } catch (error) {
       addToast(error?.message || "Gagal Mengambil data dorp", {
         appearance: "error"
@@ -44,15 +44,14 @@ const useRepository = ({
     }
   };
   const getDistrict = async ({ dorpId }) => {
-    const params = queryParams({
-      dorpId
-    });
-    const configs = Address.getProvince({ params });
+    const configs = Address.district({ params: { dorpId } });
     let response;
     try {
       setLoading({ district: true });
       response = await callAPIs(configs);
-      setDistrict(response.data);
+      setDistrict(
+        response.data?.map(item => ({ value: item.id, label: item.nama })) || []
+      );
     } catch (error) {
       addToast(error?.message || "Gagal Mengambil data district", {
         appearance: "error"

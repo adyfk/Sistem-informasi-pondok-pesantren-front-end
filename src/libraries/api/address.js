@@ -8,12 +8,11 @@ class Address {
     this.#url = `${BASE_URL + path}`;
   }
 
-  province = ({ params }) => ({
+  province = () => ({
     additionalHeader: {
       Authorization: `Bearer ${getToken()}`
     },
     method: "get",
-    params,
     uri: `${this.#url}/province`
   });
 
@@ -22,11 +21,8 @@ class Address {
       Authorization: `Bearer ${getToken()}`
     },
     method: "get",
-    params: {
-      ...params,
-      cost: parseInt(params.cost)
-    },
-    uri: `${this.#url}/drop`
+    params,
+    uri: `${this.#url}/dorp`
   });
 
   district = ({ params }) => ({

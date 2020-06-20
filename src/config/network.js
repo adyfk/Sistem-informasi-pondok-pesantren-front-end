@@ -8,7 +8,6 @@ export const callAPIs = ({ method, uri, params, additionalHeader }) => {
     : "data";
   const defaultConfig = { method, headers, url };
   const config = { ...defaultConfig, [dataOrParams]: params };
-
   return new Promise(async (res, rej) => {
     try {
       const response = await axios(config);
