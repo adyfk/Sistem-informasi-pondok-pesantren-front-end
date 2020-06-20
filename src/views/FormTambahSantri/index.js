@@ -31,13 +31,20 @@ const SantriManagement = () => {
                   <div className="float-right">
                     <Button
                       outline
-                      className="btn-white text-danger shadow-sm px-5"
+                      className="shadow-sm px-5"
                       pill
+                      theme="danger"
                       onClick={methods.reset}
                     >
                       Batal
                     </Button>
-                    <Button type="submit" className="ml-4 shadow-sm px-5" pill>
+                    <Button
+                      // outline
+                      type="submit"
+                      theme="primary"
+                      className="ml-4 shadow-sm px-5"
+                      pill
+                    >
                       Simpan
                     </Button>
                   </div>

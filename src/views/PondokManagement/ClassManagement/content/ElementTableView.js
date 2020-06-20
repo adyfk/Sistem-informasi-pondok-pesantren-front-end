@@ -1,7 +1,7 @@
 import React from "react";
 import { toLocalString } from "../../../../utils/string";
 
-function ElementTableView({ index, title, cost, onEdit }) {
+function ElementTableView({ index, title, cost, onEdit, onView }) {
   return (
     <tr>
       <td>{index}</td>
@@ -16,6 +16,12 @@ function ElementTableView({ index, title, cost, onEdit }) {
           className="material-icons text-warning text-button"
         >
           create
+        </span>
+        <span
+          onClick={onView}
+          className="material-icons text-primary text-button ml-4"
+        >
+          more
         </span>
       </td>
     </tr>

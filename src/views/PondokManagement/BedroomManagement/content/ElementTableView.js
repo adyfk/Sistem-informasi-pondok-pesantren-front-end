@@ -1,6 +1,6 @@
 import React from "react";
 
-function ElementTableView({ index, title, gender, capacity, onEdit }) {
+function ElementTableView({ index, title, gender, capacity, onEdit, onView }) {
   return (
     <tr>
       <td>{index}</td>
@@ -16,6 +16,12 @@ function ElementTableView({ index, title, gender, capacity, onEdit }) {
           className="material-icons text-warning text-button"
         >
           create
+        </span>
+        <span
+          onClick={onView}
+          className="material-icons text-primary text-button ml-4"
+        >
+          more
         </span>
       </td>
     </tr>

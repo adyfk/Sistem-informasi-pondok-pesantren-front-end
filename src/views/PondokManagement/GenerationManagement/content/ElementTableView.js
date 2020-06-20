@@ -6,6 +6,7 @@ function ElementTableView({
   description,
   cost,
   onEdit,
+  onView,
   onDelete
 }) {
   return (
@@ -29,6 +30,12 @@ function ElementTableView({
             className="material-icons text-danger text-button ml-4"
           >
             delete
+          </span>
+          <span
+            onClick={onView}
+            className="material-icons text-primary text-button ml-4"
+          >
+            more
           </span>
         </div>
       </td>

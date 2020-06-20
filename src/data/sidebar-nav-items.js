@@ -12,24 +12,14 @@ export default function() {
       to: "/pondok-management"
     },
     {
-      title: "Santri Management",
-      htmlBefore: '<i class="material-icons">vertical_split</i>',
-      to: "/santri-management"
-    },
-    {
       title: "Payment",
       htmlBefore: '<i class="material-icons">vertical_split</i>',
       to: "/payment"
     },
     {
-      title: "Bedroom Santri",
+      title: "Santri Management",
       htmlBefore: '<i class="material-icons">vertical_split</i>',
-      to: "/bedroom-management"
-    },
-    {
-      title: "Class Santri",
-      htmlBefore: '<i class="material-icons">vertical_split</i>',
-      to: "/class-management"
+      to: "/santri-management"
     },
     {
       title: "Blog Posts",
