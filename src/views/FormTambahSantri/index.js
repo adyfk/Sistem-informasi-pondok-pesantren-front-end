@@ -1,10 +1,11 @@
 import React from "react";
-import { Container, Row, Button } from "shards-react";
+import { Container, Row, Button, Modal, Col } from "shards-react";
 
 import PageTitle from "../../components/common/PageTitle";
 import TableSantriManagement from "./content/BodySantriManagement";
 import useAction, { CtxAddSantriManagement } from "./hooks/useAction";
 import { useForm, FormContext } from "react-hook-form";
+import { Link } from "react-router-dom";
 const SantriManagement = () => {
   const methods = useForm();
   const action = useAction({ formMethods: methods });
@@ -29,12 +30,14 @@ const SantriManagement = () => {
                 right={
                   <div className="float-right">
                     <Button
+                      outline
                       className="btn-white text-danger shadow-sm px-5"
                       pill
+                      onClick={methods.reset}
                     >
                       Batal
                     </Button>
-                    <Button className="ml-4 shadow-sm px-5" pill>
+                    <Button type="submit" className="ml-4 shadow-sm px-5" pill>
                       Simpan
                     </Button>
                   </div>
@@ -43,6 +46,42 @@ const SantriManagement = () => {
             </Row>
             <TableSantriManagement />
           </form>
+          <Modal
+            size="sm"
+            open={Boolean(action.notice)}
+            toggle={action.toggleNotice}
+          >
+            <Row className="py-4">
+              <Col lg="12" className="text-center">
+                <span class="material-icons display-4 text-success">done</span>
+              </Col>
+              <Col lg="12" className="text-center">
+                <div>Sukses Tambah Santri</div>
+              </Col>
+              <Col lg="12" className="mt-4 text-center">
+                <div>
+                  <Button
+                    className="btn-white text-danger mr-1"
+                    onClick={() => {
+                      methods.reset();
+                      action.toggleNotice();
+                    }}
+                    pill
+                  >
+                    Tambah Santri{" "}
+                  </Button>
+                  <Button
+                    tag={Link}
+                    to={`detail/${"test"}`}
+                    className="btn-primary ml-1"
+                    pill
+                  >
+                    Lengkapi Data
+                  </Button>
+                </div>
+              </Col>
+            </Row>
+          </Modal>
         </Container>
       </CtxAddSantriManagement.Provider>
     </FormContext>

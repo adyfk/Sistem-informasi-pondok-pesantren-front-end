@@ -16,6 +16,15 @@ class Santri {
     params,
     uri: `${this.#url}/`
   });
+
+  saveSantri = params => ({
+    additionalHeader: {
+      Authorization: `Bearer ${getToken()}`
+    },
+    method: "post",
+    params,
+    uri: `${this.#url}/`
+  });
 }
 
 export default new Santri("santri");

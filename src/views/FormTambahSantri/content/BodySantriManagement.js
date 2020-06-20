@@ -43,20 +43,20 @@ function BodySantriManagement() {
             </InputGroup>
           </Col>
           <Col lg="4" className="text-left form-group">
-            <label htmlFor="name">
+            <label htmlFor="email">
               <small>Email</small>
             </label>
             <InputGroup>
               <FormInput
-                invalid={Boolean(errors["name"])}
-                type="text"
-                id="name"
-                name="name"
+                invalid={Boolean(errors["email"])}
+                type="email"
+                id="email"
+                name="email"
                 innerRef={register}
                 placeholder="ex. jordan@email.co.id"
               />
-              {errors["name"] && (
-                <FormFeedback>{errors["name"].message}</FormFeedback>
+              {errors["email"] && (
+                <FormFeedback>{errors["email"].message}</FormFeedback>
               )}
             </InputGroup>
           </Col>

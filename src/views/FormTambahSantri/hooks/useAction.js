@@ -7,13 +7,13 @@ export const CtxAddSantriManagement = createContext({ payload: {} });
 
 export default function useAction({ formMethods }) {
   const {
-    loadingAddress,
     listDistrict,
     listProvince,
     listDorp,
     repository: { getProvince, getDistrict, getDorp }
   } = useActionAddress();
   const { watch, getValues, setValue } = formMethods;
+  const [notice, setNotice] = useState(false);
   const [loading, setLoading] = useState({});
   const [payload, setPayload] = useState({});
   const { addToast } = useToasts();
@@ -21,7 +21,8 @@ export default function useAction({ formMethods }) {
     payload,
     setPayload,
     addToast,
-    setLoading
+    setLoading,
+    setNotice
   });
 
   useEffect(() => {
@@ -38,17 +39,27 @@ export default function useAction({ formMethods }) {
     setValue([{ district: "" }]);
   }, [watch("dorp")]);
 
+  const onSubmit = values => {
+    repository.saveSantri(values);
+  };
+
+  const toggleNotice = () => {
+    setNotice(prev => !prev);
+  };
+
   return {
     loading,
-    loadingAddress,
     payload,
-    setPayload,
-    setLoading,
     repository,
     address: {
       listDistrict,
       listProvince,
       listDorp
-    }
+    },
+    notice,
+    setPayload,
+    setLoading,
+    onSubmit,
+    toggleNotice
   };
 }
