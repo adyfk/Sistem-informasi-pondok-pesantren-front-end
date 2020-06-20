@@ -38,7 +38,7 @@ const PageTitle = ({
         <h3 className="page-title">{title}</h3>
       </Col>
       {right && (
-        <Col lg="5" sm="4" className={classNameRight}>
+        <Col lg={right === "search" ? 3 : 5} sm="4" className={classNameRight}>
           {right === "search" ? (
             <InputGroup seamless>
               <InputGroupAddon type="prepend">

@@ -4,13 +4,13 @@ import { Container, Row, Col } from "shards-react";
 
 import MainNavbar from "../../components/layout/MainNavbar/MainNavbar";
 import MainSidebar from "../../components/layout/MainSidebar/MainSidebar";
-import MainFooter from "../../components/layout/MainFooter";
+// import MainFooter from "../../components/layout/MainFooter";
 
 import useAction, { CtxUserProfile } from "./hooks/useAction";
 
 const DefaultLayout = ({
   children,
-  layoutProps: { noNavbar, noSidebar, noFooter, fullWidth }
+  layoutProps: { noNavbar, noSidebar, fullWidth }
 }) => {
   const action = useAction();
   const props = {
@@ -34,7 +34,7 @@ const DefaultLayout = ({
           <Col className="main-content p-0" {...props} tag="main">
             {!noNavbar && <MainNavbar />}
             {children}
-            {!noFooter && <MainFooter />}
+            {/* {!noFooter && <MainFooter />} */}
           </Col>
         </Row>
       </Container>
