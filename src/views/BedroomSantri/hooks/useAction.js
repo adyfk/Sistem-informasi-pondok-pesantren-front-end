@@ -2,7 +2,7 @@ import { useState, createContext, useEffect } from "react";
 import useRepository from "./useRepository";
 import { useToasts } from "react-toast-notifications";
 
-export const CtxClass = createContext({
+export const CtxBedroomSantri = createContext({
   loading: {},
   bedroom: {},
   studentBedroom: []
@@ -11,6 +11,8 @@ export const CtxClass = createContext({
 export default function useAction() {
   const [loading, setLoading] = useState({});
   const [studentBedroom, setStudentBedroom] = useState([]);
+  const [add, setAdd] = useState("");
+  const [detail, setDetail] = useState({});
   const [bedroom, setBedroom] = useState({});
   const useEdit = useState(false);
   const { addToast } = useToasts();
@@ -18,7 +20,9 @@ export default function useAction() {
   const repository = useRepository({
     useEdit,
     setBedroom,
+    setDetail,
     setLoading,
+    setAdd,
     addToast,
     studentBedroom,
     setStudentBedroom
@@ -37,6 +41,10 @@ export default function useAction() {
     loading,
     bedroom,
     useEdit,
+    add,
+    repository,
+    setAdd,
+    detail,
     studentBedroom,
     setLoading,
     onDelete

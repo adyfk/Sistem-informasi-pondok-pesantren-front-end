@@ -9,8 +9,8 @@ export default function useAction({ formMethods }) {
   const {
     listDistrict,
     listProvince,
-    listDorp,
-    repository: { getProvince, getDistrict, getDorp }
+    listRegency,
+    repository: { getProvince, getDistrict, getRegency }
   } = useActionAddress();
   const { watch, getValues, setValue } = formMethods;
   const [notice, setNotice] = useState(false);
@@ -30,14 +30,14 @@ export default function useAction({ formMethods }) {
   }, []);
 
   useEffect(() => {
-    getDorp({ provinceId: getValues("province") });
-    setValue([{ dorp: "", district: "" }]);
+    getRegency({ provinceId: getValues("province") });
+    setValue([{ regency: "", district: "" }]);
   }, [watch("province")]);
 
   useEffect(() => {
-    getDistrict({ dorpId: getValues("dorp") });
+    getDistrict({ regencyId: getValues("regency") });
     setValue([{ district: "" }]);
-  }, [watch("dorp")]);
+  }, [watch("regency")]);
 
   const onSubmit = values => {
     repository.saveSantri(values);
@@ -54,7 +54,7 @@ export default function useAction({ formMethods }) {
     address: {
       listDistrict,
       listProvince,
-      listDorp
+      listRegency
     },
     notice,
     setPayload,

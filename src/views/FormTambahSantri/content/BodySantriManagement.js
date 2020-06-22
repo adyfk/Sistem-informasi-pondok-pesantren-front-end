@@ -16,7 +16,7 @@ import { CtxAddSantriManagement } from "../hooks/useAction";
 
 function BodySantriManagement() {
   const {
-    address: { listDistrict, listProvince, listDorp }
+    address: { listDistrict, listProvince, listRegency }
   } = useContext(CtxAddSantriManagement);
   const { register, errors, control } = useFormContext();
 
@@ -126,7 +126,7 @@ function BodySantriManagement() {
                 as={ReactSelect}
                 options={listProvince}
                 invalid={Boolean(errors["province"])}
-                placeholder="ex. Jawa Tengah"
+                placeholder="ex. Provinsi"
                 id="province"
                 name="province"
               />
@@ -136,7 +136,7 @@ function BodySantriManagement() {
             </InputGroup>
           </Col>
           <Col lg="4" className="text-left form-group">
-            <label htmlFor="dorp">
+            <label htmlFor="regency">
               <small>Kabupaten/Kota</small>
             </label>
             <InputGroup>
@@ -144,14 +144,14 @@ function BodySantriManagement() {
                 control={control}
                 fullWidth={true}
                 as={ReactSelect}
-                options={listDorp}
-                invalid={Boolean(errors["dorp"])}
+                options={listRegency}
+                invalid={Boolean(errors["regency"])}
                 placeholder="ex. Jawa Tengah"
-                id="dorp"
-                name="dorp"
+                id="regency"
+                name="regency"
               />
-              {errors["dorp"] && (
-                <FormFeedback>{errors["dorp"].message}</FormFeedback>
+              {errors["regency"] && (
+                <FormFeedback>{errors["regency"].message}</FormFeedback>
               )}
             </InputGroup>
           </Col>
@@ -166,12 +166,29 @@ function BodySantriManagement() {
                 as={ReactSelect}
                 options={listDistrict}
                 invalid={Boolean(errors["district"])}
-                placeholder="ex. Jawa Tengah"
+                placeholder="ex. Kecamatan"
                 id="district"
                 name="district"
               />
               {errors["district"] && (
                 <FormFeedback>{errors["district"].message}</FormFeedback>
+              )}
+            </InputGroup>
+          </Col>
+          <Col lg="4" className="text-left form-group">
+            <label htmlFor="postCode">
+              <small>Kode POS</small>
+            </label>
+            <InputGroup>
+              <FormInput
+                invalid={Boolean(errors["postCode"])}
+                type="text"
+                id="postCode"
+                name="postCode"
+                innerRef={register}
+              />
+              {errors["postCode"] && (
+                <FormFeedback>{errors["postCode"].message}</FormFeedback>
               )}
             </InputGroup>
           </Col>
@@ -190,23 +207,6 @@ function BodySantriManagement() {
               ></FormInput>
               {errors["address"] && (
                 <FormFeedback>{errors["address"].message}</FormFeedback>
-              )}
-            </InputGroup>
-          </Col>
-          <Col lg="4" className="text-left form-group">
-            <label htmlFor="postCode">
-              <small>Kode POS</small>
-            </label>
-            <InputGroup>
-              <FormInput
-                invalid={Boolean(errors["postCode"])}
-                type="text"
-                id="postCode"
-                name="postCode"
-                innerRef={register}
-              />
-              {errors["postCode"] && (
-                <FormFeedback>{errors["postCode"].message}</FormFeedback>
               )}
             </InputGroup>
           </Col>

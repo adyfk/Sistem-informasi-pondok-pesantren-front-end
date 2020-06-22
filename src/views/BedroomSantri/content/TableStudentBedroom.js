@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import { Row, Col, Card, CardHeader, CardBody, Button } from "shards-react";
 
 import { schemaTable } from "../helper";
-import { CtxClass } from "../hooks/useAction";
+import { CtxBedroomSantri } from "../hooks/useAction";
 import ElementTableView from "./ElementTableView";
 
 function TableStudentBedroom() {
-  const { bedroom, studentBedroom, setEmptyClass, onDelete } = useContext(
-    CtxClass
+  const { bedroom, studentBedroom, setAdd, onDelete } = useContext(
+    CtxBedroomSantri
   );
   return (
     <Row>
@@ -19,7 +19,7 @@ function TableStudentBedroom() {
             </h6>
             <div>
               <Button
-                onClick={setEmptyClass}
+                onClick={() => setAdd("add")}
                 className="btn-primary text-white btn-sm"
                 pill
               >

@@ -5,8 +5,8 @@ import { Address } from "../../api";
 const useRepository = ({
   setLoading,
   setProvince,
-  setDorp,
   setDistrict,
+  setRegency,
   addToast
 }) => {
   const getProvince = async () => {
@@ -26,13 +26,13 @@ const useRepository = ({
       setLoading({});
     }
   };
-  const getDorp = async ({ provinceId }) => {
-    const configs = Address.dorp({ params: { provinceId } });
+  const getRegency = async ({ provinceId }) => {
+    const configs = Address.regency({ params: { provinceId } });
     let response;
     try {
       setLoading({ dorp: true });
       response = await callAPIs(configs);
-      setDorp(
+      setRegency(
         response.data?.map(item => ({ value: item.id, label: item.nama })) || []
       );
     } catch (error) {
@@ -43,8 +43,8 @@ const useRepository = ({
       setLoading({});
     }
   };
-  const getDistrict = async ({ dorpId }) => {
-    const configs = Address.district({ params: { dorpId } });
+  const getDistrict = async ({ regencyId }) => {
+    const configs = Address.district({ params: { regencyId } });
     let response;
     try {
       setLoading({ district: true });
@@ -64,7 +64,7 @@ const useRepository = ({
   return {
     getProvince,
     getDistrict,
-    getDorp
+    getRegency
   };
 };
 

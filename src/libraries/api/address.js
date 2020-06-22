@@ -16,13 +16,13 @@ class Address {
     uri: `${this.#url}/province`
   });
 
-  dorp = ({ params }) => ({
+  regency = ({ params }) => ({
     additionalHeader: {
       Authorization: `Bearer ${getToken()}`
     },
     method: "get",
     params,
-    uri: `${this.#url}/dorp`
+    uri: `${this.#url}/regency`
   });
 
   district = ({ params }) => ({

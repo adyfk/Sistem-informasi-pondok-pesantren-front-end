@@ -22,6 +22,14 @@ class BedroomStudent {
     method: "put",
     uri: `${this.#url}/${id}/checkout`
   });
+  getStudentNis = params => ({
+    additionalHeader: {
+      Authorization: `Bearer ${getToken()}`
+    },
+    method: "get",
+    params,
+    uri: `${this.#url}/student`
+  });
 }
 
 export default new BedroomStudent("student-bedroom");

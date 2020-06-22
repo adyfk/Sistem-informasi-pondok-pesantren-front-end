@@ -3,13 +3,14 @@ import { Container, Row } from "shards-react";
 
 import PageTitle from "../../components/common/PageTitle";
 import TableStudentBedroom from "./content/TableStudentBedroom";
-import useAction, { CtxClass } from "./hooks/useAction";
+import DialogAdd from "./content/DialogAdd";
+import useAction, { CtxBedroomSantri } from "./hooks/useAction";
 import { string } from "../../utils/string";
 
 const BedroomManagement = () => {
   const action = useAction();
   return (
-    <CtxClass.Provider value={action}>
+    <CtxBedroomSantri.Provider value={action}>
       <Container fluid className="main-content-container px-4">
         <Row noGutters className="page-header py-4">
           <PageTitle
@@ -23,7 +24,8 @@ const BedroomManagement = () => {
         </Row>
         <TableStudentBedroom />
       </Container>
-    </CtxClass.Provider>
+      <DialogAdd></DialogAdd>
+    </CtxBedroomSantri.Provider>
   );
 };
 

@@ -5,7 +5,9 @@ import { getQuery } from "../../../utils/api";
 const useRepository = ({
   setStudentBedroom,
   setBedroom,
-  addToast
+  addToast,
+  setDetail,
+  setAdd
   // setLoading,
 }) => {
   const query = getQuery();
@@ -50,10 +52,27 @@ const useRepository = ({
     }
   };
 
+  const getStudentNis = async ({ id }) => {
+    const configs = BedroomStudent.getStudentNis({
+      id,
+      bedroomId: query.get("id")
+    });
+    try {
+      const { data } = await callAPIs(configs);
+      setDetail(data);
+      setAdd("detail");
+    } catch (error) {
+      addToast(error?.message || "Gagal checkout student", {
+        appearance: "error"
+      });
+    }
+  };
+
   return {
     listStudentBedroom,
     checkoutStudent,
-    getBedroom
+    getBedroom,
+    getStudentNis
   };
 };
 
