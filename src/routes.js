@@ -14,8 +14,7 @@ import SantriManagement from "./views/SantriManagement";
 import TambahSantriManagement from "./views/FormTambahSantri";
 import Payment from "./views/Payment";
 import BedroomStudent from "./views/BedroomSantri";
-import BedroomSantri from "./views/BedroomSantri";
-import ClassSantri from "./views/ClassSantri";
+import ClassStudent from "./views/ClassSantri";
 import NotFound from "./views/NotFound";
 import BlogOverview from "./views/BlogOverview";
 import UserProfileLite from "./views/UserProfileLite";
@@ -94,21 +93,18 @@ export default [
     exact: true
   },
   {
+    path: rootUrl.pondokManagement + "/class-management/santri",
+    layout: DefaultLayout,
+    component: ClassStudent,
+    auth: true,
+    exact: true
+  },
+  {
     path: rootUrl.pondokManagement + "/class-management",
     layout: DefaultLayout,
     component: ClassManagement,
     auth: true,
     exact: true
-  },
-  {
-    path: "/bedroom-santri",
-    layout: DefaultLayout,
-    component: BedroomSantri
-  },
-  {
-    path: "/class-santri",
-    layout: DefaultLayout,
-    component: ClassSantri
   },
   {
     path: "/blog-overview",

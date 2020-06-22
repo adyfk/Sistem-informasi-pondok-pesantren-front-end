@@ -1,7 +1,8 @@
 import React from "react";
 import { toLocalString } from "../../../../utils/string";
+import { Link } from "react-router-dom";
 
-function ElementTableView({ index, title, cost, onEdit, onView }) {
+function ElementTableView({ id, index, title, cost, onEdit, onView }) {
   return (
     <tr>
       <td>{index}</td>
@@ -17,12 +18,11 @@ function ElementTableView({ index, title, cost, onEdit, onView }) {
         >
           create
         </span>
-        <span
-          onClick={onView}
-          className="material-icons text-primary text-button ml-4"
-        >
-          more
-        </span>
+        <Link to={`class-management/santri?id=${id}`}>
+          <span className="material-icons text-primary text-button ml-4">
+            more
+          </span>
+        </Link>
       </td>
     </tr>
   );

@@ -1,41 +1,35 @@
 import { getToken } from "../../utils/auth";
 import { BASE_URL } from "./endpoint";
 
-class ClassX {
+class ClassBedroom {
   #url = "";
 
   constructor(path) {
     this.#url = `${BASE_URL + path}`;
   }
 
-  getClass = (id = "") => ({
+  getStudentByClassId = ({ id }) => ({
     additionalHeader: {
       Authorization: `Bearer ${getToken()}`
     },
     method: "get",
-    uri: `${this.#url}/${id}`
+    uri: `${this.#url}/${id}/student`
   });
-
-  createClass = ({ params }) => ({
-    additionalHeader: {
-      Authorization: `Bearer ${getToken()}`
-    },
-    method: "post",
-    params: {
-      ...params,
-      cost: parseInt(params.cost)
-    },
-    uri: `${this.#url}/`
-  });
-
-  updateClass = ({ id, params }) => ({
+  checkoutStudent = ({ id }) => ({
     additionalHeader: {
       Authorization: `Bearer ${getToken()}`
     },
     method: "put",
+    uri: `${this.#url}/${id}/checkout`
+  });
+  getStudentNis = params => ({
+    additionalHeader: {
+      Authorization: `Bearer ${getToken()}`
+    },
+    method: "get",
     params,
-    uri: `${this.#url}/${id}`
+    uri: `${this.#url}/student`
   });
 }
 
-export default new ClassX("class");
+export default new ClassBedroom("student-class");
