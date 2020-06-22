@@ -15,19 +15,19 @@ class BlogPosts extends React.Component {
       // First list of posts.
       PostsListOne: [
         {
-          category: "Generation Management",
+          category: "Menejemen Angkatan",
           categoryTheme: "dark",
           body: "Menambah & Mengubah biaya administrasi",
           to: pushPath("generation-management")
         },
         {
-          category: "Bedroom Manamagent",
+          category: "Menejemen Kamar",
           categoryTheme: "royal-blue",
           body: "Menambah & Mengubah data kamar",
           to: pushPath("bedroom-management")
         },
         {
-          category: "Class Management",
+          category: "Menejemen Kamar",
           categoryTheme: "warning",
           body: "Menambah & Mengubah data kelas",
           to: pushPath("class-management")
@@ -45,7 +45,7 @@ class BlogPosts extends React.Component {
         <Row noGutters className="page-header py-4">
           <PageTitle
             sm="4"
-            title="Pondok Management"
+            title="Menejemen Pondok"
             subtitle="Pilih Menu"
             className="text-sm-left"
           />
