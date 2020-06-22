@@ -5,7 +5,7 @@ export const schemaTable = {
     { name: "dateOfBirth", label: "Date Of Birth" },
     { name: "phoneNumber", label: "PhoneNumber" },
     { name: "email", label: "Email" },
-    { name: "studentId", label: "Date In" },
+    { name: "studentIn", label: "Date In" },
     { name: "action", label: "Action", classHead: "" }
   ]
 };

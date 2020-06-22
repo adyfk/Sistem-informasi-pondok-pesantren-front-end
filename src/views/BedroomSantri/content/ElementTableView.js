@@ -13,10 +13,10 @@ function ElementTableView({
     <tr>
       <td>{index}</td>
       <td>{name}</td>
-      <td>{new Date(studentIn).toDateString()}</td>
       <td>{new Date(dateOfBirth).toDateString()}</td>
       <td>{phoneNumber}</td>
       <td>{email}</td>
+      <td>{new Date(studentIn).toDateString()}</td>
       <td className="bg-white">
         <span onClick={onDelete} className="text-danger h6 text-button">
           Keluar

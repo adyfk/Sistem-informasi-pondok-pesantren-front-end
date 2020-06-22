@@ -39,6 +39,7 @@ function TableStudentClass() {
                 </tr>
               </thead>
               <tbody>
+                {console.log(studentClass)}
                 {studentClass?.map((data, index) => (
                   <ElementTableView
                     {...data}
