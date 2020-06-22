@@ -97,9 +97,8 @@ const useRepository = ({
     let response;
     try {
       response = await callAPIs(configs);
-      const { GenerationDetails, ...generation } = response.data;
-      setGeneration(generation);
-      setGenerationDetail(GenerationDetails);
+      const { data } = response;
+      setGeneration(data);
       addToast(response?.message || "Sukse generate data generation", {
         appearance: "success"
       });
