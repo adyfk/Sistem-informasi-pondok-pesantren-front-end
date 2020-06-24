@@ -55,14 +55,33 @@ const useRepository = ({
   const getStudentNis = async ({ id }) => {
     const configs = ClassStudent.getStudentNis({
       id,
-      ClassId: query.get("id")
+      bedroomId: query.get("id")
     });
     try {
       const { data } = await callAPIs(configs);
       setDetail(data);
       setAdd("detail");
     } catch (error) {
-      addToast(error?.message || "Gagal checkout student", {
+      addToast(error?.message || "Gagal menambah santri", {
+        appearance: "error"
+      });
+    }
+  };
+
+  const addStudentToClass = async studentId => {
+    const configs = ClassStudent.addStudentToClass({
+      studentId,
+      classId: query.get("id")
+    });
+    try {
+      await callAPIs(configs);
+      listStudentClass();
+      addToast("Berhasil menambah santri", {
+        appearance: "success"
+      });
+      setAdd(false);
+    } catch (error) {
+      addToast(error?.message || "Gagal menambah santri", {
         appearance: "error"
       });
     }
@@ -72,7 +91,8 @@ const useRepository = ({
     listStudentClass,
     checkoutStudent,
     getClass,
-    getStudentNis
+    getStudentNis,
+    addStudentToClass
   };
 };
 
