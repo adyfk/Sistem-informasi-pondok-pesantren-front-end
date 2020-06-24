@@ -25,20 +25,20 @@ const SignInSchema = yup.object().shape({
 });
 
 const LoginForm = ({ userDetails }) => {
-  const { repository } = useContext(CtxUser)
+  const { repository } = useContext(CtxUser);
   const { register, handleSubmit, errors, setError } = useForm({
     validationSchema: SignInSchema
   });
-  const onSubmit = async(params) => {
+  const onSubmit = async params => {
     try {
-      await repository.login(params)
-      console.log('sukses')
-      window.location.href = '/'
+      await repository.login(params);
+      console.log("sukses");
+      window.location.href = "/";
     } catch (error) {
-      console.log(error)
-      setError(error)
+      console.log(error);
+      setError(error);
     }
-  }
+  };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Card small className="py-3">

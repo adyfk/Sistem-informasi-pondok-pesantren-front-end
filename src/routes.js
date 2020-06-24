@@ -30,6 +30,7 @@ const rootUrl = {
 
 export default [
   {
+    auth: true,
     path: "/",
     exact: true,
     layout: DefaultLayout,
@@ -48,6 +49,7 @@ export default [
     component: Login
   },
   {
+    auth: true,
     path: "/santri-management",
     layout: DefaultLayout,
     exact: true,
@@ -57,11 +59,14 @@ export default [
     path: "/santri-management/tambah",
     exact: true,
     layout: DefaultLayout,
+    auth: true,
     component: TambahSantriManagement
   },
   {
     path: "/payment",
     layout: DefaultLayout,
+    auth: true,
+    exact: true,
     component: Payment
   },
   {

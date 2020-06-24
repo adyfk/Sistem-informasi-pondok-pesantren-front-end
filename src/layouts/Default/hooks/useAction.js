@@ -13,7 +13,9 @@ export default function useAction() {
     addToast
   });
   useEffect(() => {
-    repository.getProfile({});
+    if (!window.location.pathname.includes("/login")) {
+      repository.getProfile({});
+    }
   }, []);
   return {
     loading,
