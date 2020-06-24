@@ -4,6 +4,7 @@ import { Container, Row } from "shards-react";
 import PageTitle from "../../components/common/PageTitle";
 import TableStudentBedroom from "./content/TableStudentBedroom";
 import DialogAdd from "./content/DialogAdd";
+import DialogDetail from "./content/DialogDetail";
 import useAction, { CtxBedroomSantri } from "./hooks/useAction";
 import { string } from "../../utils/string";
 
@@ -25,6 +26,7 @@ const BedroomManagement = () => {
         <TableStudentBedroom />
       </Container>
       <DialogAdd></DialogAdd>
+      <DialogDetail></DialogDetail>
     </CtxBedroomSantri.Provider>
   );
 };

@@ -68,11 +68,31 @@ const useRepository = ({
     }
   };
 
+  const addStudentToBedroom = async studentId => {
+    const configs = BedroomStudent.adStudentToBedroom({
+      studentId,
+      bedroomId: query.get("id")
+    });
+    try {
+      await callAPIs(configs);
+      listStudentBedroom();
+      addToast("Berhasil menambah santri", {
+        appearance: "success"
+      });
+      setAdd(false);
+    } catch (error) {
+      addToast(error?.message || "Gagal checkout student", {
+        appearance: "error"
+      });
+    }
+  };
+
   return {
     listStudentBedroom,
     checkoutStudent,
     getBedroom,
-    getStudentNis
+    getStudentNis,
+    addStudentToBedroom
   };
 };
 

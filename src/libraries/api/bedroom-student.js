@@ -30,6 +30,14 @@ class BedroomStudent {
     params,
     uri: `${this.#url}/student`
   });
+  adStudentToBedroom = params => ({
+    additionalHeader: {
+      Authorization: `Bearer ${getToken()}`
+    },
+    method: "post",
+    params,
+    uri: `${this.#url}/`
+  });
 }
 
 export default new BedroomStudent("student-bedroom");
