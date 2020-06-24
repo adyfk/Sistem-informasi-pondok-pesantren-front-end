@@ -60,7 +60,9 @@ const SantriManagement = () => {
           >
             <Row className="py-4">
               <Col lg="12" className="text-center">
-                <span class="material-icons display-4 text-success">done</span>
+                <span className="material-icons display-4 text-success">
+                  done
+                </span>
               </Col>
               <Col lg="12" className="text-center">
                 <div>Sukses Tambah Santri</div>
