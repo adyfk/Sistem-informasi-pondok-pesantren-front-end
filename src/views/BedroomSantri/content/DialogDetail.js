@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { Row, Modal, Col, Button, InputGroup, FormInput } from "shards-react";
+import React, { useContext } from "react";
+import { Row, Modal, Col, Button } from "shards-react";
 
 import { CtxBedroomSantri } from "../hooks/useAction";
 

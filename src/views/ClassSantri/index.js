@@ -6,6 +6,7 @@ import TableStudentBedroom from "./content/TableStudentBedroom";
 import DialogAdd from "./content/DialogAdd";
 import useAction, { CtxClassSantri } from "./hooks/useAction";
 import { string } from "../../utils/string";
+import DialogDetail from "./content/DialogDetail";
 
 const BedroomManagement = () => {
   const action = useAction();
@@ -25,6 +26,7 @@ const BedroomManagement = () => {
         <TableStudentBedroom />
       </Container>
       <DialogAdd></DialogAdd>
+      <DialogDetail></DialogDetail>
     </CtxClassSantri.Provider>
   );
 };

@@ -30,6 +30,14 @@ class ClassBedroom {
     params,
     uri: `${this.#url}/student`
   });
+  addStudentToClass = params => ({
+    additionalHeader: {
+      Authorization: `Bearer ${getToken()}`
+    },
+    method: "post",
+    params,
+    uri: `${this.#url}/`
+  });
 }
 
 export default new ClassBedroom("student-class");
