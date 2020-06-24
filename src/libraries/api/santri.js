@@ -8,13 +8,13 @@ class Santri {
     this.#url = `${BASE_URL + path}`;
   }
 
-  getSantri = params => ({
+  getSantri = (params, path = "") => ({
     additionalHeader: {
       Authorization: `Bearer ${getToken()}`
     },
     method: "get",
     params,
-    uri: `${this.#url}/`
+    uri: `${this.#url}/${path}`
   });
 
   saveSantri = params => ({

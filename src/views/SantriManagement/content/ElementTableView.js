@@ -1,8 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function ElementTableView({
   index,
   name,
+  id,
   gender,
   dateOfBirth,
   phoneNumber,
@@ -19,9 +21,11 @@ function ElementTableView({
       <td>{phoneNumber}</td>
       <td>{email}</td>
       <td className="bg-white">
-        <span onClick={onDelete} className="text-primary h6 text-button">
-          Detail
-        </span>
+        <Link to={`/santri-management/detail?id=${id}`}>
+          <span onClick={onDelete} className="text-primary h6 text-button">
+            Detail
+          </span>
+        </Link>
       </td>
     </tr>
   );
