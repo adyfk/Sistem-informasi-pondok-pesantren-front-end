@@ -1,8 +1,9 @@
 import React, { useRef } from "react";
 import { Col, Row, Button } from "shards-react";
 import { Link } from "react-router-dom";
+import ScaleLoader from "react-spinners/ScaleLoader";
 
-export function ItemFile({ item, url }) {
+export function ItemFile({ loading, item, url, handleUpload }) {
   const ref = useRef();
   return (
     <Col className="pt-1 pb-2 border-bottom" lg="12">
@@ -17,18 +18,26 @@ export function ItemFile({ item, url }) {
           className="d-flex justify-content-between align-items-center"
         >
           {Boolean(url) && (
-            <Link title={`Download File ${item.label}`} to={url}>
+            <a
+              target="_blank"
+              download
+              rel="noopener noreferrer"
+              href={url}
+              title={`Download File ${item.label}`}
+            >
               <span className="text-danger material-icons">file_copy</span>
-            </Link>
+            </a>
           )}
           {Boolean(url) || "Empty"}
 
           <input
             accept=".pdf"
             ref={ref}
+            onChange={handleUpload({ name: item.name })}
             type="file"
             style={{ display: "none" }}
           ></input>
+          <ScaleLoader height={10} color={"#123abc"} loading={loading} />
           <Button onClick={() => ref.current.click()} outline size="sm" pill>
             {Boolean(url) && "Ubah file"}
             {Boolean(url) || "Pilih File"}

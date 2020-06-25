@@ -36,6 +36,10 @@ export default function useAction() {
     info,
     santri,
     parent,
-    document
+    document,
+    setSantri,
+    setParent,
+    setDocument,
+    setInfo
   };
 }

@@ -1,43 +1,18 @@
-import { useEffect } from "react";
-import useActionAddress from "../../../../../libraries/hooks/address/useAction";
+import { useState } from "react";
+import useRepository from "./useRepository";
+import { useToasts } from "react-toast-notifications";
 
-export default function useAction({
-  reset,
-  parent,
-  setValue,
-  getValues,
-  watch
-}) {
-  const {
-    listDistrict,
-    listProvince,
-    listRegency,
-    repository: { getProvince, getDistrict, getRegency }
-  } = useActionAddress();
+export default function useAction({ setDocument }) {
+  const { addToast } = useToasts();
+  const [loading, setLoading] = useState({});
+  const repository = useRepository({
+    setLoading,
+    setDocument,
+    addToast
+  });
 
-  useEffect(() => {
-    getProvince();
-  }, []);
-
-  useEffect(() => {
-    reset(parent);
-  }, [parent]);
-
-  useEffect(() => {
-    getRegency({ provinceId: getValues("province") });
-    setValue([{ regency: "", district: "" }]);
-  }, [watch("province")]);
-
-  useEffect(() => {
-    getDistrict({ regencyId: getValues("regency") });
-    setValue([{ district: "" }]);
-  }, [watch("regency")]);
-
-  return {
-    address: {
-      listDistrict,
-      listProvince,
-      listRegency
-    }
+  const handleUpload = ({ name }) => async e => {
+    await repository.uploadFile({ name, file: e.target.files[0] });
   };
+  return { loading, handleUpload };
 }

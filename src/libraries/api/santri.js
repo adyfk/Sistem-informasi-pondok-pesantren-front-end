@@ -25,6 +25,33 @@ class Santri {
     params,
     uri: `${this.#url}/`
   });
+
+  updateSantri = params => ({
+    additionalHeader: {
+      Authorization: `Bearer ${getToken()}`
+    },
+    method: "put",
+    params,
+    uri: `${this.#url}/`
+  });
+
+  updateParent = (params, studentId = "") => ({
+    additionalHeader: {
+      Authorization: `Bearer ${getToken()}`
+    },
+    method: "put",
+    params,
+    uri: `${this.#url}/${studentId}/parent`
+  });
+
+  updateDocument = (params, studentId = "") => ({
+    additionalHeader: {
+      Authorization: `Bearer ${getToken()}`
+    },
+    method: "put",
+    params,
+    uri: `${this.#url}/${studentId}/document`
+  });
 }
 
 export default new Santri("santri");
