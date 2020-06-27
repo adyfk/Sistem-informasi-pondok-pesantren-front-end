@@ -4,6 +4,7 @@ import Classx from "./class";
 import Bedroom from "./bedroom";
 import Address from "./address";
 import Document from "./document";
+import Payment from "./payment";
 import Santri from "./santri";
 import BedroomStudent from "./bedroom-student";
 import ClassStudent from "./class-student";
@@ -17,5 +18,6 @@ export {
   Santri,
   Document,
   BedroomStudent,
-  ClassStudent
+  ClassStudent,
+  Payment
 };
