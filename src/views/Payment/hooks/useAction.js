@@ -7,7 +7,9 @@ export const CtxPaymentManagement = createContext({
 });
 
 export default function useAction() {
-  const [loading, setLoading] = useState({});
+  const [loading, setLoading] = useState({
+    listPayment: "empty"
+  });
   const [search, setSearch] = useState("");
   const [santri, setSantri] = useState({});
   const [payment, setPayment] = useState([]);
@@ -21,9 +23,11 @@ export default function useAction() {
 
   useEffect(() => {
     if (search.length === 11) {
-      setTimeout(() => {
-        repository.listPayment(search);
-      }, 50);
+      repository.listPayment(search);
+    } else if (search.length === 0) {
+      setLoading({ listPayment: "empty" });
+      setSantri({});
+      setPayment([]);
     }
   }, [search]);
 

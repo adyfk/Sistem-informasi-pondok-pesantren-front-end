@@ -1,9 +1,10 @@
 import React from "react";
 import { Container, Row, Col } from "shards-react";
-
+import ReactPlaceholder from "react-placeholder";
 import PageTitle from "../../components/common/PageTitle";
 import TableSantriManagement from "./content/TableSantriManagement";
 import useAction, { CtxPaymentManagement } from "./hooks/useAction";
+import TableSkeleton from "./skeleton/TableSkeleton";
 
 const SantriManagement = () => {
   const action = useAction();
@@ -27,15 +28,23 @@ const SantriManagement = () => {
             className="text-sm-left"
           />
         </Row>
-        <Row className="mb-3">
-          <Col>
-            <small>Nama</small> <span>{action.santri.name}</span>
-          </Col>
-          <Col className="text-right">
-            <small>Nim</small> <span>{action.santri.id}</span>
-          </Col>
-        </Row>
-        <TableSantriManagement />
+        {action.loading.listPayment !== "empty" && (
+          <ReactPlaceholder
+            showLoadingAnimation
+            ready={action.loading.listPayment === "done"}
+            customPlaceholder={TableSkeleton}
+          >
+            <Row className="mb-3">
+              <Col>
+                <small>Nama</small> <span>{action.santri.name}</span>
+              </Col>
+              <Col className="text-right">
+                <small>Nim</small> <span>{action.santri.id}</span>
+              </Col>
+            </Row>
+            <TableSantriManagement />
+          </ReactPlaceholder>
+        )}
       </Container>
     </CtxPaymentManagement.Provider>
   );
