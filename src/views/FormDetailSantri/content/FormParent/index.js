@@ -18,14 +18,15 @@ import { CtxDetailSantriManagement } from "../../hooks/useAction";
 import useAction from "./hooks/useAction";
 
 function BodySantriManagement() {
-  const { parent } = useContext(CtxDetailSantriManagement);
+  const { parent, onSubmitParent } = useContext(CtxDetailSantriManagement);
   const action = useForm({
     defaultValues: parent
   });
   const { register, errors, control, handleSubmit } = action;
   const { address } = useAction({ ...action, parent });
-  const onSubmit = values => {
-    console.log(values);
+  const onSubmit = async values => {
+    await onSubmitParent(values);
+    alert("sukses update data orang tua");
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

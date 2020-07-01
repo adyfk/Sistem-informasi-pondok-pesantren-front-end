@@ -31,6 +31,9 @@ export default function useAction() {
     repository.getProfile();
   }, []);
 
+  const onSubmitStudent = values => repository.updateSantri(values);
+  const onSubmitParent = values => repository.updateParent(values);
+
   return {
     repository,
     info,
@@ -40,6 +43,8 @@ export default function useAction() {
     setSantri,
     setParent,
     setDocument,
-    setInfo
+    setInfo,
+    onSubmitStudent,
+    onSubmitParent
   };
 }

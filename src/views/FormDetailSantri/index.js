@@ -14,6 +14,7 @@ const DetailSantriManagement = () => {
       StudentDetail: { generationId, titleGeneration }
     }
   } = action;
+  console.log(action);
   return (
     <CtxDetailSantriManagement.Provider value={action}>
       <Container fluid className="main-content-container">

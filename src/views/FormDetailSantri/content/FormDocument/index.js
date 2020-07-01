@@ -9,7 +9,6 @@ import { BASE_URL } from "../../../../libraries/api/endpoint";
 function BodySantriManagement() {
   const { document, setDocument } = useContext(CtxDetailSantriManagement);
   const { loading, handleUpload } = useAction({ setDocument });
-  console.log(loading);
   return (
     <Card className="shadow-sm">
       <CardBody>

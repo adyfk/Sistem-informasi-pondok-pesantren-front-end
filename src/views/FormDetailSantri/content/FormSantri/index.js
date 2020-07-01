@@ -18,14 +18,15 @@ import { CtxDetailSantriManagement } from "../../hooks/useAction";
 import useAction from "./hooks/useAction";
 
 function BodySantriManagement() {
-  const { santri } = useContext(CtxDetailSantriManagement);
+  const { santri, onSubmitStudent } = useContext(CtxDetailSantriManagement);
   const action = useForm({
     defaultValues: santri
   });
   const { register, errors, control, handleSubmit } = action;
   const { address } = useAction({ ...action, santri });
-  const onSubmit = values => {
-    console.log(values);
+  const onSubmit = async values => {
+    await onSubmitStudent(values);
+    alert("sukses update data santri");
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -193,7 +194,6 @@ function BodySantriManagement() {
                 <FormInput
                   invalid={Boolean(errors["postCode"])}
                   type="number"
-                  max="5"
                   id="postCode"
                   name="postCode"
                   innerRef={register}
@@ -222,10 +222,10 @@ function BodySantriManagement() {
               </InputGroup>
             </Col>
             <Col lg="12" className="text-right mt-2">
-              <Button theme="danger" className="mr-3" outline pill>
+              <Button type="reset" theme="danger" className="mr-3" outline pill>
                 Reset
               </Button>
-              <Button pill theme="primary">
+              <Button type="submit" pill theme="primary">
                 Simpan
               </Button>
             </Col>

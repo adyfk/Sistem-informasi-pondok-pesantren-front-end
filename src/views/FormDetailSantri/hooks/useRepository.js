@@ -32,8 +32,42 @@ const useRepository = ({ setSantri, setParent, setDocument, setInfo }) => {
     }
   };
 
+  const updateSantri = values =>
+    new Promise(async res => {
+      const query = getQuery();
+      const configs = Santri.updateSantri(values, query.get("id"));
+
+      try {
+        const { data } = await callAPIs(configs);
+        setSantri(data);
+      } catch (error) {
+        console.log(error);
+        alert("failed simpan santri");
+      } finally {
+        res(true);
+      }
+    });
+
+  const updateParent = values =>
+    new Promise(async res => {
+      const query = getQuery();
+      const configs = Santri.updateSantri(values, query.get("id"));
+
+      try {
+        const { data } = await callAPIs(configs);
+        setParent(data);
+      } catch (error) {
+        console.log(error);
+        alert("failed simpan santri");
+      } finally {
+        res(true);
+      }
+    });
+
   return {
-    getProfile
+    getProfile,
+    updateParent,
+    updateSantri
   };
 };
 

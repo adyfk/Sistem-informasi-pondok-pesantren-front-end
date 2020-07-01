@@ -26,13 +26,13 @@ class Santri {
     uri: `${this.#url}/`
   });
 
-  updateSantri = params => ({
+  updateSantri = (params, studentId) => ({
     additionalHeader: {
       Authorization: `Bearer ${getToken()}`
     },
     method: "put",
     params,
-    uri: `${this.#url}/`
+    uri: `${this.#url}/${studentId}`
   });
 
   updateParent = (params, studentId = "") => ({
