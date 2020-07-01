@@ -1,8 +1,9 @@
 export const toLocalString = number => {
+  if (!number) return "0";
   if (typeof number !== "number") {
     const afterParse = parseInt(number);
-    if (afterParse.toString() === "NaN") return 0;
-    return afterParse;
+    if (afterParse.toString() === "NaN") return "0";
+    return afterParse + "";
   }
   return number.toLocaleString();
 };

@@ -9,7 +9,7 @@ function ElementTableView({
   bill,
   paid,
   createdAt,
-  onDelete
+  onDetail
 }) {
   return (
     <tr>
@@ -27,16 +27,16 @@ function ElementTableView({
       <td>
         <span
           className={`badge badge-${
-            bill - parseInt(paid) === 0 ? "success" : "danger"
+            bill - parseInt(paid) <= 0 ? "success" : "danger"
           }`}
         >
-          {bill - parseInt(paid) === 0 ? "Lunas" : "Belum Lunas"}
+          {bill - parseInt(paid) <= 0 ? "Lunas" : "Belum Lunas"}
         </span>
       </td>
       <td>{new Date(createdAt).toDateString()}</td>
       <td className="bg-white">
         {/* <Link to={`/santri-management/detail?id=${id}`}> */}
-        <span onClick={onDelete} className="text-primary h6 text-button">
+        <span onClick={onDetail} className="text-primary h6 text-button">
           Detail
         </span>
         {/* </Link> */}

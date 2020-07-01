@@ -5,6 +5,7 @@ import PageTitle from "../../components/common/PageTitle";
 import TableSantriManagement from "./content/TableSantriManagement";
 import useAction, { CtxPaymentManagement } from "./hooks/useAction";
 import TableSkeleton from "./skeleton/TableSkeleton";
+import ModalDetail from "./content/ModalDetail";
 
 const SantriManagement = () => {
   const action = useAction();
@@ -46,6 +47,7 @@ const SantriManagement = () => {
           </ReactPlaceholder>
         )}
       </Container>
+      <ModalDetail></ModalDetail>
     </CtxPaymentManagement.Provider>
   );
 };

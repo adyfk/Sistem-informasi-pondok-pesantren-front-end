@@ -6,7 +6,7 @@ import { CtxPaymentManagement } from "../hooks/useAction";
 import ElementTableView from "./ElementTableView";
 
 function TableSantri() {
-  const { payment } = useContext(CtxPaymentManagement);
+  const { payment, onDetail } = useContext(CtxPaymentManagement);
   return (
     <Row>
       <Col>
@@ -32,9 +32,9 @@ function TableSantri() {
               <tbody>
                 {payment.map((payment, index) => (
                   <ElementTableView
-                    key={index}
+                    key={index + "table-santri"}
                     index={index + 1}
-                    onDetail={() => ""}
+                    onDetail={onDetail(index)}
                     {...payment}
                   ></ElementTableView>
                 ))}
