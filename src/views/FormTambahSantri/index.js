@@ -81,7 +81,7 @@ const SantriManagement = () => {
                   </Button>
                   <Button
                     tag={Link}
-                    to={`detail/${"test"}`}
+                    to={`detail?id=${action.notice}`}
                     className="btn-primary ml-1"
                     pill
                   >

@@ -78,6 +78,7 @@ function BodySantriManagement() {
                   invalid={Boolean(errors["phoneNumber"])}
                   type="text"
                   id="phoneNumber"
+                  max="14"
                   name="phoneNumber"
                   innerRef={register}
                   placeholder="ex. 082136950725"
@@ -191,7 +192,8 @@ function BodySantriManagement() {
               <InputGroup>
                 <FormInput
                   invalid={Boolean(errors["postCode"])}
-                  type="text"
+                  type="number"
+                  max="5"
                   id="postCode"
                   name="postCode"
                   innerRef={register}

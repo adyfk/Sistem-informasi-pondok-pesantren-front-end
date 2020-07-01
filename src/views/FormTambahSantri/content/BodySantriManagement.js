@@ -182,7 +182,8 @@ function BodySantriManagement() {
             <InputGroup>
               <FormInput
                 invalid={Boolean(errors["postCode"])}
-                type="text"
+                type="number"
+                placeholder="24122"
                 id="postCode"
                 name="postCode"
                 innerRef={register}

@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  TextBlock,
-  MediaBlock,
-  TextRow,
-  RectShape,
-  RoundShape
-} from "react-placeholder/lib/placeholders";
+import { TextRow, RectShape } from "react-placeholder/lib/placeholders";
 import { Row, Col } from "shards-react";
 import "react-placeholder/lib/reactPlaceholder.css";
 
