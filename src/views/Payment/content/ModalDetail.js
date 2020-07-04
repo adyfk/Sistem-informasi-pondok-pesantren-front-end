@@ -32,7 +32,12 @@ function ModalDetail() {
     setState(prev => ({
       ...prev,
       value: value,
-      error: !value || value?.match(/[^\d,]/g)
+      error:
+        !value ||
+        value === "0" ||
+        value.length <= 3 ||
+        value?.match(/[^\d,]/g) ||
+        bill - paid - parseInt(value) < 0
     }));
   };
   return (
@@ -80,8 +85,8 @@ function ModalDetail() {
           ))}
           <Col className="mt-4">
             <Row>
-              <Col lg="5"></Col>
-              <Col className="text-right" lg="4">
+              <Col lg="3"></Col>
+              <Col className="text-right" lg="6">
                 {state.status && (
                   <InputGroup>
                     {/* <label>Input Bayar</label> */}
@@ -93,7 +98,9 @@ function ModalDetail() {
                       value={state.value || ""}
                     />
                     {state.error && (
-                      <FormFeedback>Harus berisi angka.</FormFeedback>
+                      <FormFeedback>
+                        Harus berisi angka & tidak melebihi tagihan
+                      </FormFeedback>
                     )}
                   </InputGroup>
                 )}
@@ -101,6 +108,7 @@ function ModalDetail() {
               <Col className="text-right" lg="3">
                 {paid - bill < 0 && (
                   <Button
+                    disabled={state.error}
                     theme="dark"
                     onClick={() => {
                       if (state.status) {
