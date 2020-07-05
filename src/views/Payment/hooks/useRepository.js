@@ -11,7 +11,7 @@ const useRepository = ({
 }) => {
   const listPayment = id => {
     const configs = Payment.getBill({
-      id: "RQ.2017.001"
+      id
     });
     let response;
     setLoading({ listPayment: "loading" });
@@ -30,7 +30,7 @@ const useRepository = ({
       } finally {
         setLoading({ listPayment: "done" });
       }
-    }, 1);
+    }, 3000);
   };
 
   const getDetailBill = async ({ paymentId }) => {

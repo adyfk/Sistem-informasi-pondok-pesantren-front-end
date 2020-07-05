@@ -98,7 +98,7 @@ function ModalDetail() {
                       value={state.value || ""}
                     />
                     {state.error && (
-                      <FormFeedback>
+                      <FormFeedback style={{ fontSize: 10 }}>
                         Harus berisi angka & tidak melebihi tagihan
                       </FormFeedback>
                     )}

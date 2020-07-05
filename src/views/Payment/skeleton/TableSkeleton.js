@@ -30,126 +30,126 @@ const TableSkeleton = (
           style={{ width: "100%", height: 40 }}
         />
       </Col>
-      <Col lg="4" className="mb-3">
+      <Col lg="4" className="mt-4 mb-4">
         <RectShape
           className="show-loading-animation"
           color="#E0E0E0"
           style={{ width: "100%", height: 20 }}
         />
       </Col>
-      <Col lg="4" className="mb-3">
+      <Col lg="4" className="mt-4 mb-4">
         <RectShape
           className="show-loading-animation"
           color="#E0E0E0"
           style={{ width: "100%", height: 20 }}
         />
       </Col>
-      <Col lg="4" className="mb-3">
+      <Col lg="4" className="mt-4 mb-4">
         <RectShape
           className="show-loading-animation"
           color="#E0E0E0"
           style={{ width: "100%", height: 20 }}
         />
       </Col>
-      <Col lg="4" className="mb-3">
+      <Col lg="4" className="mt-2 mb-4">
         <RectShape
           className="show-loading-animation"
           color="#E0E0E0"
           style={{ width: "100%", height: 20 }}
         />
       </Col>
-      <Col lg="4" className="mb-3">
+      <Col lg="4" className="mt-2 mb-4">
         <RectShape
           className="show-loading-animation"
           color="#E0E0E0"
           style={{ width: "100%", height: 20 }}
         />
       </Col>
-      <Col lg="4" className="mb-3">
+      <Col lg="4" className="mt-2 mb-4">
         <RectShape
           className="show-loading-animation"
           color="#E0E0E0"
           style={{ width: "100%", height: 20 }}
         />
       </Col>
-      <Col lg="4" className="mb-3">
+      <Col lg="4" className="mt-2 mb-4">
         <RectShape
           className="show-loading-animation"
           color="#E0E0E0"
           style={{ width: "100%", height: 20 }}
         />
       </Col>
-      <Col lg="4" className="mb-3">
+      <Col lg="4" className="mt-2 mb-4">
         <RectShape
           className="show-loading-animation"
           color="#E0E0E0"
           style={{ width: "100%", height: 20 }}
         />
       </Col>
-      <Col lg="4" className="mb-3">
+      <Col lg="4" className="mt-2 mb-4">
         <RectShape
           className="show-loading-animation"
           color="#E0E0E0"
           style={{ width: "100%", height: 20 }}
         />
       </Col>
-      <Col lg="4" className="mb-3">
+      <Col lg="4" className="mt-2 mb-4">
         <RectShape
           className="show-loading-animation"
           color="#E0E0E0"
           style={{ width: "100%", height: 20 }}
         />
       </Col>
-      <Col lg="4" className="mb-3">
+      <Col lg="4" className="mt-2 mb-4">
         <RectShape
           className="show-loading-animation"
           color="#E0E0E0"
           style={{ width: "100%", height: 20 }}
         />
       </Col>
-      <Col lg="4" className="mb-3">
+      <Col lg="4" className="mt-2 mb-4">
         <RectShape
           className="show-loading-animation"
           color="#E0E0E0"
           style={{ width: "100%", height: 20 }}
         />
       </Col>
-      <Col lg="4" className="mb-3">
+      <Col lg="4" className="mt-2 mb-4">
         <RectShape
           className="show-loading-animation"
           color="#E0E0E0"
           style={{ width: "100%", height: 20 }}
         />
       </Col>
-      <Col lg="4" className="mb-3">
+      <Col lg="4" className="mt-2 mb-4">
         <RectShape
           className="show-loading-animation"
           color="#E0E0E0"
           style={{ width: "100%", height: 20 }}
         />
       </Col>
-      <Col lg="4" className="mb-3">
+      <Col lg="4" className="mt-2 mb-4">
         <RectShape
           className="show-loading-animation"
           color="#E0E0E0"
           style={{ width: "100%", height: 20 }}
         />
       </Col>
-      <Col lg="4" className="mb-3">
+      <Col lg="4" className="mt-2 mb-4">
         <RectShape
           className="show-loading-animation"
           color="#E0E0E0"
           style={{ width: "100%", height: 20 }}
         />
       </Col>
-      <Col lg="4" className="mb-3">
+      <Col lg="4" className="mt-2 mb-4">
         <RectShape
           className="show-loading-animation"
           color="#E0E0E0"
           style={{ width: "100%", height: 20 }}
         />
       </Col>
-      <Col lg="4" className="mb-3">
+      <Col lg="4" className="mt-2 mb-4">
         <RectShape
           className="show-loading-animation"
           color="#E0E0E0"

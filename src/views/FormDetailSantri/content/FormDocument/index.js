@@ -21,7 +21,10 @@ function BodySantriManagement() {
                 key={item.name}
                 loading={Boolean(loading[item.name])}
                 item={item}
-                url={`${BASE_URL}document/${document[item.name]}`}
+                url={
+                  document[item.name] &&
+                  `${BASE_URL}document/${document[item.name]}`
+                }
               ></ItemFile>
             );
           })}

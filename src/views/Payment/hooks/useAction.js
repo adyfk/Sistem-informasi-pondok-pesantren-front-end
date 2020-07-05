@@ -31,15 +31,14 @@ export default function useAction() {
   });
 
   useEffect(() => {
-    // if (search.length === 11) {
-    repository.listPayment(search);
-    // } else if (search.length === 0) {
-    //   setLoading({ listPayment: "empty" });
-    //   setSantri({});
-    //   setPayment([]);
-    // }
-  }, []);
-  // }, [search]);
+    if (search.length === 11) {
+      repository.listPayment(search);
+    } else if (search.length === 0) {
+      setLoading({ listPayment: "empty" });
+      setSantri({});
+      setPayment([]);
+    }
+  }, [search]);
   const onDetail = index => () => {
     setDetail({
       index,

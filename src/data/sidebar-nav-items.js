@@ -2,7 +2,7 @@ export default function() {
   return [
     {
       title: "Dashboard",
-      to: "/blog-overview",
+      to: "/",
       htmlBefore: '<i class="material-icons">vertical_split</i>',
       htmlAfter: ""
     },
