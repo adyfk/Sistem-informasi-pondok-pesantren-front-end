@@ -12,9 +12,6 @@ const useRepository = ({ setSantris, setLoading, addToast }) => {
       const { data } = response;
       setSantris(data);
     } catch (error) {
-      addToast(error?.message || "Gagal Mengambil data santri", {
-        appearance: "error"
-      });
     } finally {
       setLoading({});
     }
