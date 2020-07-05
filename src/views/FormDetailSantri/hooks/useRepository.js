@@ -17,8 +17,14 @@ const useRepository = ({ setSantri, setParent, setDocument, setInfo }) => {
           ...santri
         }
       } = await callAPIs(config);
-      setParent(Parent);
-      setSantri(santri);
+      setParent({
+        ...Parent,
+        dateOfBirth: new Date(Parent.dateOfBirth).toLocaleDateString("en-CA")
+      });
+      setSantri({
+        ...santri,
+        dateOfBirth: new Date(santri.dateOfBirth).toLocaleDateString("en-CA")
+      });
       setDocument(StudentDocument);
       setInfo({
         User,
@@ -51,7 +57,7 @@ const useRepository = ({ setSantri, setParent, setDocument, setInfo }) => {
   const updateParent = values =>
     new Promise(async res => {
       const query = getQuery();
-      const configs = Santri.updateSantri(values, query.get("id"));
+      const configs = Santri.updateParent(values, query.get("id"));
 
       try {
         const { data } = await callAPIs(configs);

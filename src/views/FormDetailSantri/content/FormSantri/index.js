@@ -1,5 +1,4 @@
 import React, { useContext } from "react"; //  { useContext }
-import { DevTool } from "react-hook-form-devtools";
 import ReactSelect from "../../../../components/common/ReactSelect";
 import {
   Card,
@@ -23,13 +22,16 @@ function BodySantriManagement() {
     defaultValues: santri
   });
   const { register, errors, control, handleSubmit } = action;
-  const { address } = useAction({ ...action, santri });
+  const { listDistrict, listProvince, listRegency } = useAction({
+    ...action,
+    santri
+  });
   const onSubmit = async values => {
     await onSubmitStudent(values);
     alert("sukses update data santri");
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form id="form-santri" onSubmit={handleSubmit(onSubmit)}>
       <Card className="shadow-sm">
         <CardBody>
           <CardTitle>Data Santri</CardTitle>
@@ -135,7 +137,7 @@ function BodySantriManagement() {
                   control={control}
                   fullWidth={true}
                   as={ReactSelect}
-                  options={address.listProvince}
+                  options={listProvince}
                   invalid={Boolean(errors["province"])}
                   placeholder="ex. Provinsi"
                   id="province"
@@ -155,7 +157,7 @@ function BodySantriManagement() {
                   control={control}
                   fullWidth={true}
                   as={ReactSelect}
-                  options={address.listRegency}
+                  options={listRegency}
                   invalid={Boolean(errors["regency"])}
                   placeholder="ex. Jawa Tengah"
                   id="regency"
@@ -175,7 +177,7 @@ function BodySantriManagement() {
                   control={control}
                   fullWidth={true}
                   as={ReactSelect}
-                  options={address.listDistrict}
+                  options={listDistrict}
                   invalid={Boolean(errors["district"])}
                   placeholder="ex. Kecamatan"
                   id="district"
@@ -231,7 +233,6 @@ function BodySantriManagement() {
             </Col>
           </Row>
         </CardBody>
-        <DevTool control={control} />
       </Card>
     </form>
   );

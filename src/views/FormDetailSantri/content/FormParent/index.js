@@ -23,13 +23,16 @@ function BodySantriManagement() {
     defaultValues: parent
   });
   const { register, errors, control, handleSubmit } = action;
-  const { address } = useAction({ ...action, parent });
+  const { listDistrict, listRegency, listProvince } = useAction({
+    ...action,
+    parent
+  });
   const onSubmit = async values => {
     await onSubmitParent(values);
     alert("sukses update data orang tua");
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form id="form-parent" onSubmit={handleSubmit(onSubmit)}>
       <Card className="shadow-sm">
         <CardBody>
           <CardTitle>Data Wali</CardTitle>
@@ -134,7 +137,7 @@ function BodySantriManagement() {
                   control={control}
                   fullWidth={true}
                   as={ReactSelect}
-                  options={address.listProvince}
+                  options={listProvince}
                   invalid={Boolean(errors["province"])}
                   placeholder="ex. Provinsi"
                   id="province"
@@ -154,7 +157,7 @@ function BodySantriManagement() {
                   control={control}
                   fullWidth={true}
                   as={ReactSelect}
-                  options={address.listRegency}
+                  options={listRegency}
                   invalid={Boolean(errors["regency"])}
                   placeholder="ex. Jawa Tengah"
                   id="regency"
@@ -174,7 +177,7 @@ function BodySantriManagement() {
                   control={control}
                   fullWidth={true}
                   as={ReactSelect}
-                  options={address.listDistrict}
+                  options={listDistrict}
                   invalid={Boolean(errors["district"])}
                   placeholder="ex. Kecamatan"
                   id="district"

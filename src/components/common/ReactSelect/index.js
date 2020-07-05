@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React from "react";
 import Select from "react-select";
 import "./styles.css";
@@ -37,7 +38,7 @@ const ReactSelect = ({ onChange, value, ...rest }) => {
     onChange(item.value);
   };
   const getValue = (opts, val) => {
-    return opts.find(o => val === o.value);
+    return opts.find(o => val == o.value);
   };
   return (
     <Select
@@ -48,8 +49,8 @@ const ReactSelect = ({ onChange, value, ...rest }) => {
       }}
       styles={customStyles}
       onChange={handleChange}
-      {...rest}
       maxMenuHeight={210}
+      {...rest}
     />
   );
 };
