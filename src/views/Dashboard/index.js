@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row } from "shards-react";
-
+import Body from "./content/body";
 import PageTitle from "../../components/common/PageTitle";
 
 const Dashboard = () => (
@@ -13,6 +13,7 @@ const Dashboard = () => (
         className="text-sm-left mb-3"
       />
     </Row>
+    <Body></Body>
   </Container>
 );
 

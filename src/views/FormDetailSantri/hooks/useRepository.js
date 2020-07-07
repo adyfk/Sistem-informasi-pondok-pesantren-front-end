@@ -45,7 +45,10 @@ const useRepository = ({ setSantri, setParent, setDocument, setInfo }) => {
 
       try {
         const { data } = await callAPIs(configs);
-        setSantri(data);
+        setSantri({
+          ...data,
+          dateOfBirth: new Date(data.dateOfBirth).toLocaleDateString("en-CA")
+        });
       } catch (error) {
         console.log(error);
         alert("failed simpan santri");
@@ -61,7 +64,10 @@ const useRepository = ({ setSantri, setParent, setDocument, setInfo }) => {
 
       try {
         const { data } = await callAPIs(configs);
-        setParent(data);
+        setParent({
+          ...data,
+          dateOfBirth: new Date(data.dateOfBirth).toLocaleDateString("en-CA")
+        });
       } catch (error) {
         console.log(error);
         alert("failed simpan santri");
